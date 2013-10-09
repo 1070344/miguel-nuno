@@ -26,6 +26,7 @@ class ViasLigacao
 		ViasLigacao();
 		ViasLigacao(const ViasLigacao &vias);
 		ViasLigacao(string cod,double totalVia,double tempMedio);
+		virtual ViasLigacao * clone() const;
 		virtual ~ViasLigacao();
 
 		//SET's e GET's
@@ -44,10 +45,10 @@ class ViasLigacao
 		virtual ViasLigacao * clone() const=0;
 
 		//Sobrecarga de operadores
-		ViasLigacao & operator =(const ViasLigacao &vias);
+		/*ViasLigacao & operator =(const ViasLigacao &vias);
 		bool operator >(const ViasLigacao &vias);
 		bool operator <(const ViasLigacao &vias);
-		bool operator ==(const ViasLigacao &vias);
+		bool operator ==(const ViasLigacao &vias);*/
 };
 
 ViasLigacao::ViasLigacao(){
@@ -74,7 +75,18 @@ ViasLigacao::ViasLigacao(const ViasLigacao &vias)
 }
 
 
-ViasLigacao::~ViasLigacao(){}
+ViasLigacao::~ViasLigacao()
+{
+
+}
+
+
+ViasLigacao * ViasLigacao::clone() const{
+	ViasLigacao * v = new ViasLigacao(*this);
+	return v;
+}
+
+
 
 
 void ViasLigacao::setCodigoVia(string cod)
@@ -112,28 +124,30 @@ double ViasLigacao::getTempoMedioPercurso() const
 
 
 
-ViasLigacao & ViasLigacao::operator=(const ViasLigacao &vias)
+/*ViasLigacao & ViasLigacao::operator=(const ViasLigacao &vias)
 {
-	this->codigo = vias.codigo;
-	this->totalKilometrosVia = vias.totalKilometrosVia;
-	this->tempMedioPercurso = vias.tempMedioPercurso;
+	if(this != &vias){
+		codigo = vias.getCodigoVia();
+		totalKilometrosVia = vias.getTotalKilometrosVia();
+		tempMedioPercurso = vias.getTempoMedioPercurso();
+	}
 	return *this;
 }
 
 bool ViasLigacao::operator < (const ViasLigacao & vias)
 {
-	
+	if (codigo < vias.codigo) return true; else return false;
 }
 
 bool ViasLigacao::operator > (const ViasLigacao & vias)
 {
-
+	if (codigo > vias.codigo) return true; else return false;
 }
 
 bool ViasLigacao::operator == (const ViasLigacao & vias)
 {
-
-}
+	if (codigo == vias.codigo) return true; else return false;
+}*/
 
 void ViasLigacao::inserirViaLigacao(ViasLigacao *v)
 {
@@ -168,7 +182,7 @@ void ViasLigacao::contarVias() const
 	int autoestradas = 0;
 	int estradasnacionais = 0;
 
-	for (int i=0; i<actual; i++)
+	/*for (int i=0; i<actual; i++)
 	{
 		if (typeid(*vec[i]) == typeid(AutoEstradas)) autoestradas++;
 		if (typeid(*vec[i]) == typeid(EstradasNacionais)) estradasnacionais++;
@@ -176,17 +190,18 @@ void ViasLigacao::contarVias() const
 	cout << "Total de Vias de Ligacao" << endl;
 	cout << "::::::::::Auto-Estradas: " << autoestradas << " vias." << endl;
 	cout << "::::::::::Estradas-Nacionais: " << estradasnacionais << " vias." << endl;
+	*/
 }
 
 
 
 void ViasLigacao::escreve(ostream & out)
 {  
-	for (int i=0; i<actual; i++)
+	/*for (int i=0; i<actual; i++)
 	{ 
 		if (typeid(*vec[i]) == typeid(AutoEstradas)) dynamic_cast <AutoEstradas *>(vec[i])->escreve(out); 
 		if (typeid(*vec[i]) == typeid(EstradasNacionais)) dynamic_cast <EstradasNacionais *>(vec[i])->escreve(out); 
-	} 
+	} */
 }
 
 

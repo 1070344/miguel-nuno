@@ -23,7 +23,7 @@ class AutoEstradas : public ViasLigacao
 		bool operator <(const AutoEstradas &ae);
 		bool operator ==(const AutoEstradas &ae);
 		void escreve(ostream &out) const;
-		AutoEstradas &operator = (const AutoEstradas &ae);
+		
 
 };
 

@@ -24,7 +24,7 @@ class EstradasNacionais : public ViasLigacao
 		bool operator <(const EstradasNacionais &en);
 		bool operator ==(const EstradasNacionais &en);
 		void escreve(ostream &out);
-		EstradasNacionais &operator = (const EstradasNacionais &en);
+		
 
 };
 

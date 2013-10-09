@@ -19,9 +19,10 @@ class Locais
 		Locais **vec;
 	public:
 		Locais();
-		Locais(const Locais & loc);
+		Locais(const Locais &loc);
 		Locais(string desc);
-		~Locais();
+		virtual Locais * clone() const;	
+		virtual ~Locais();
 
 		//set's e get´s
 		void setDescricao(string d);
@@ -29,6 +30,8 @@ class Locais
 
 		//metodos da classe
 		virtual void contarLocais()const;
+		virtual void inserirLocal()const;
+
 		
 
 
@@ -57,27 +60,29 @@ Locais::Locais(string d)
 
 Locais::~Locais(){}
 
-
+Locais * Locais::clone() const{
+	Locais * l = new Locais(*this);
+	return l;
+}
 
 
 
 void Locais::contarLocais() const
 {
-	int historicos = 0;
-	int naturais = 0;
-
+	int cont = 0;
 	for (int i=0; i<actual; i++)
 	{
-		if (typeid(*vec[i]) == typeid(LocaisNaturais)) historicos++;
-		if (typeid(*vec[i]) == typeid(LocaisHistoricosCulturais)) naturais++;
+		cont++;
 	}
-	cout << "Total de Locais" << endl;
-	cout << "::::::::::Locais Naturais: " << historicos << " vias." << endl;
-	cout << "::::::::::Locais Historicos Naturais: " << naturais << " vias." << endl;
+	cout << "Total de Locais: " << cont << endl;
 }
 
 
 
+void Locais::inserirLocal()const
+{
+	
+}
 
 
 

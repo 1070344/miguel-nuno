@@ -2,8 +2,6 @@
 #define AutoEstradas_
 
 
-using namespace std;
-
 class AutoEstradas : public ViasLigacao
 {
 	private:

@@ -1,24 +1,22 @@
-﻿Build started 08/10/2013 12:11:16.
-     1>Project "C:\Users\Miguel\Documents\GitHub\ESINF\MapaDigital\MapaDigital\MapaDigital.vcxproj" on node 2 (Build target(s)).
+﻿Build started 09/10/2013 15:52:55.
+     1>Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\locaishistoricosculturais.h(16): error C2504: 'Locais' : base class undefined
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\locaishistoricosculturais.h(49): error C2614: 'LocaisHistoricosCulturais' : illegal member initialization: 'Locais' is not a base or member
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\locaisnaturais.h(16): error C2504: 'Locais' : base class undefined
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\locaisnaturais.h(35): error C2535: 'LocaisNaturais &LocaisNaturais::operator =(const LocaisNaturais &)' : member function already defined or declared
-                 c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\locaisnaturais.h(30) : see declaration of 'LocaisNaturais::operator ='
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\locaisnaturais.h(49): error C2614: 'LocaisNaturais' : illegal member initialization: 'Locais' is not a base or member
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\autoestradas.h(14): error C2504: 'ViasLigacao' : base class undefined
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\autoestradas.h(34): error C2535: 'AutoEstradas &AutoEstradas::operator =(const AutoEstradas &)' : member function already defined or declared
-                 c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\autoestradas.h(29) : see declaration of 'AutoEstradas::operator ='
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\autoestradas.h(44): error C2614: 'AutoEstradas' : illegal member initialization: 'ViasLigacao' is not a base or member
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\estradasnacionais.h(14): error C2504: 'ViasLigacao' : base class undefined
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\estradasnacionais.h(36): error C2535: 'EstradasNacionais &EstradasNacionais::operator =(const EstradasNacionais &)' : member function already defined or declared
-                 c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\estradasnacionais.h(31) : see declaration of 'EstradasNacionais::operator ='
-     1>c:\users\miguel\documents\github\esinf\mapadigital\mapadigital\estradasnacionais.h(47): error C2614: 'EstradasNacionais' : illegal member initialization: 'ViasLigacao' is not a base or member
-     1>Done Building Project "C:\Users\Miguel\Documents\GitHub\ESINF\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)) -- FAILED.
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\locais.h(71): error C2065: 'LocaisNaturais' : undeclared identifier
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\locais.h(72): error C2065: 'LocaisHistoricosCulturais' : undeclared identifier
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\viasligacao.h(173): error C2065: 'AutoEstradas' : undeclared identifier
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\viasligacao.h(174): error C2065: 'EstradasNacionais' : undeclared identifier
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\viasligacao.h(187): error C2065: 'AutoEstradas' : undeclared identifier
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\viasligacao.h(187): error C2061: syntax error : identifier 'AutoEstradas'
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\viasligacao.h(188): error C2065: 'EstradasNacionais' : undeclared identifier
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\viasligacao.h(188): error C2061: syntax error : identifier 'EstradasNacionais'
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\autoestradas.h(26): error C2535: 'AutoEstradas &AutoEstradas::operator =(const AutoEstradas &)' : member function already defined or declared
+                 c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\autoestradas.h(21) : see declaration of 'AutoEstradas::operator ='
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\estradasnacionais.h(27): error C2535: 'EstradasNacionais &EstradasNacionais::operator =(const EstradasNacionais &)' : member function already defined or declared
+                 c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\estradasnacionais.h(22) : see declaration of 'EstradasNacionais::operator ='
+     1>Done Building Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:01.66
+Time Elapsed 00:00:01.69

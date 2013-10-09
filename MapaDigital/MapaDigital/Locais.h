@@ -9,8 +9,7 @@
 
 using namespace std;
 
-#include "LocaisHistoricosCulturais.h"
-#include "LocaisNaturais.h"
+
 
 class Locais
 {

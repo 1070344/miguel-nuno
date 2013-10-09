@@ -1,15 +1,6 @@
 #ifndef LocaisHistoricosCulturais_
 #define LocaisHistoricosCulturais_
 
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string>
-#include <string.h>
-#include "Locais.h"
-
-using namespace std;
-
 
 
 class LocaisHistoricosCulturais : public Locais

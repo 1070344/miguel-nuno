@@ -1,15 +1,6 @@
 #ifndef LocaisNaturais_
 #define LocaisNaturais_
 
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string>
-#include <string.h>
-
-
-using namespace std;
-
 
 
 class LocaisNaturais : public Locais
@@ -32,8 +23,6 @@ class LocaisNaturais : public Locais
 		bool operator <(const LocaisNaturais &locNat);
 		bool operator ==(const LocaisNaturais &locNat);
 		void escrever(ostream &out) const;
-		LocaisNaturais &operator = (const LocaisNaturais &locNat);
-
 
 
 };

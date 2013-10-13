@@ -12,6 +12,7 @@ class LocaisNaturais : public Locais
 		LocaisNaturais(const LocaisNaturais &locNat);
 		LocaisNaturais(string desc,double a);
 		~LocaisNaturais();
+		virtual Locais * clone() const;
 
 		//SET's e GET's
 		void setArea(double a);
@@ -46,6 +47,13 @@ LocaisNaturais::LocaisNaturais(const LocaisNaturais &locNat)
 {
 	setArea(locNat.area);
 }
+
+
+Locais * LocaisNaturais::clone() const{
+	return new LocaisNaturais(*this);
+}
+
+
 
 void LocaisNaturais::setArea(double a)
 {

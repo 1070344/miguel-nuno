@@ -60,9 +60,9 @@ Locais::Locais(string d)
 
 Locais::~Locais(){}
 
-Locais * Locais::clone() const{
-	Locais * l = new Locais(*this);
-	return l;
+Locais * Locais::clone() const
+{
+	return new Locais(*this);
 }
 
 
@@ -78,11 +78,11 @@ void Locais::contarLocais() const
 }
 
 
-
 void Locais::inserirLocal()const
 {
-	
+	cout << "" << endl;
 }
+
 
 
 

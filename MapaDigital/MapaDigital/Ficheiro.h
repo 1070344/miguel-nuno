@@ -82,7 +82,11 @@ void Ficheiro::FicheiroLocais()
 
 
 		*/
-	
+	string desc;
+	double area;
+	int tVisita;
+	int abertura;
+	int encerramento;
 	int totalLocais = 0;
 	string nomefich1="Ficheiro1.txt";	//ficheiro dos locais
 	ifstream ler(nomefich1.c_str()); // Verifica se o Ficheiro existe
@@ -104,7 +108,7 @@ void Ficheiro::FicheiroLocais()
 
 			token=strtok(NULL,",");
 
-		
+			
 
 
 			while(token!=NULL) // Verifica se o ficheiro tem locais
@@ -112,11 +116,7 @@ void Ficheiro::FicheiroLocais()
 				int descj=atoi(token);
 				token = strtok (NULL, ",");
 				int capa= atoi(token);	
-				string desc;
-				double area;
-				int tVisita;
-				int abertura;
-				int encerramento;
+				
 				Locais *loc = new Locais(desc); // Cria um local turistico natural
 				totalLocais++; // Incrementa o numero de locais			
 				if(n==tam)//verifica se o tamanho do vector é igual ao tamanho maximo
@@ -126,7 +126,7 @@ void Ficheiro::FicheiroLocais()
 					{
 						aux[j]=local[j];
 					}
-					tam=2*tam; // Duplicação do tamanho máximo
+					tam=2*tam; // Duplicação do tamanho máximo 
 					delete[]local;
 					local=aux;
 				}
@@ -134,8 +134,8 @@ void Ficheiro::FicheiroLocais()
 				n++; // Incrementar as posicoes vector
 				token= strtok(NULL,","); // Lê o próximo para verificar se contêm mais locais
 			}
-			Locais *l= new LocaisNaturais(); // Cria um local turistico natural
-			Locais *l = new LocaisHistoricosCulturais(); // Cria um local turistico natural
+			Locais *ln= new LocaisNaturais(desc,area); // Cria um local turistico natural
+			Locais *lhc = new LocaisHistoricosCulturais(desc,tVisita,abertura,encerramento); // Cria um local turistico natural
 			totalLocais=0; 
 			n=0;	
 		}	

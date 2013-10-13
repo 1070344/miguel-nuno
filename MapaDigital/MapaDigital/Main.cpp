@@ -12,14 +12,108 @@
 #include "ViasLigacao.h"
 #include "AutoEstradas.h"
 #include "EstradasNacionais.h"
-//#include "Ficheiro.h"
+#include "Ficheiro.h"
+
+
+ 
+
+
+
+int lerFicheiroLocais(Locais vecLocais)
+{
+		
+    ifstream origem;
+	string linha;
+	string info;
+	char *aux;
+	string aux1;
+	LocaisHistoricosCulturais locHist;
+	int numLocais;
+	int nlinhas= 0;
+
+	origem.open("Ficheiro1.txt");
+	if (!origem){
+		cerr << "Erro a abrir ficheiro dos locais\n";
+		return -1;
+	}
+
+
+
+
+	while (!origem.eof()){
+		getline(origem, linha, '\n');
+	
+		if(linha.size() > 0)
+		{
+	
+			if(nlinhas == 0)
+			{
+				int inic=0;
+				int pos=linha.find(',', inic);	
+				aux1 = linha.substr(inic,pos-inic);
+				aux = &aux1[0];
+				numLocais = atoi(aux);
+				pos++;
+				nlinhas++;
+			}
+			else
+			{
+				//descrição
+				int inic=0;
+				int pos=linha.find(',', inic);
+				locHist.setDescricao((linha.substr(inic, pos-inic)));
+				pos++;
+
+				//area OU tempo medio
+				inic = pos;
+				pos=linha.find(',', inic);
+				aux1 = linha.substr(inic,pos-inic);
+				aux = &aux1[0];
+				locHist.setTempoVisita(atof(aux));
+				pos++;
+
+				//hora de abertura
+				inic = pos;
+				pos=linha.find(',', inic);
+				aux1 = linha.substr(inic,pos-inic);
+				aux = &aux1[0];
+				locHist.setHorarioAbertura(atoi(aux));
+				pos++;
+
+				//hora de encerramento
+				inic = pos;
+				pos=linha.find(',', inic);
+				aux1 = linha.substr(inic,pos-inic);
+				aux = &aux1[0];
+				locHist.setHorarioEncerramento(atoi(aux));
+
+				//invocar metodo para inserir os locais no vector
+			}
+		}
+	}
+	origem.close();
+	return 0;
+}
+ 
+
+
+
+
+
 
 int main()
 {
-	//Locais *loc;//vector de locais
-	//Ficheiro f;
+	
+
+	Ficheiro fx;
 	char sel;
- 
+	Locais vecLocais;
+
+
+
+	//carregar dados para a memoria
+	lerFicheiroLocais(vecLocais);//carregar locais para a memória
+
 	cout << "------------------------------------" << endl;
 	cout << "------------------------------------" << endl;
     cout << "       M A P A   D I G I T A L       " << endl;
@@ -38,7 +132,7 @@ int main()
     switch(sel){
         case '1':
 			cout << "Opcao 1 " << endl;
-			//lerFicheiroLocais(loc);//metodo que carrega os locais para um vector
+			
 			break;
  
         case '2':
@@ -59,108 +153,3 @@ int main()
 
 	system("pause");
 }
- 
-
-
-/*
-int lerFicheiroLocais(Locais *loc)
-{
-		
-    ifstream origem;
-	string linha;
-
-	origem.open("Ficheiro1.txt");
-	if (!origem){
-		cerr << "Erro a abrir ficheiro dos locais\n";
-		return -1;
-	}
-
-
-	while (!origem.eof())
-	{
-		getline(origem, linha, '\n');
-	
-		if(linha.size() > 0)
-		{
-			cout << "Linha do ficheiro dos locais" << endl;
-		}
-	}
-
-	/*---------------------------------------------------------------------------------------*/
-	/*string linha;
-	string info;
-
-		char *aux;
-		string aux1;
-
-		Locais  loc ;
-		
-		int nrPostos;
-		int nlinhas= 0;
-
-
-	while (!origem.eof()){
-		getline(origem, linha, '\n');
-	
-		if(linha.size() > 0)
-		{
-	
-			//nrPostos
-			
-			if(nlinhas == 0)
-			{
-			int inic=0;
-			int pos=linha.find(',', inic);	
-			aux1 = linha.substr(inic,pos-inic);
-			aux = &aux1[0];
-			nrPostos = atoi(aux);
-			pos++;
-			nlinhas++;
-			}
-			else
-			{
-
-			//chave
-			int inic=0;
-			int pos=linha.find(',', inic);
-			a.setChave((linha.substr(inic, pos-inic)));
-			pos++;
-
-			//capacidade stock
-			inic = pos;
-			pos=linha.find(',', inic);
-			aux1 = linha.substr(inic,pos-inic);
-			aux = &aux1[0];
-			a.setCapacidadestock(atof(aux));
-			pos++;
-
-			//quantidade seguranca
-			inic = pos;
-			pos=linha.find(',', inic);
-			aux1 = linha.substr(inic,pos-inic);
-			aux = &aux1[0];
-			a.setQuantidadeseguranca(atof(aux));
-			pos++;
-
-			//robot
-			inic = pos;
-			pos=linha.find(',', inic);
-			r.setChave((linha.substr(inic, pos-inic)));
-			a.setRobot(r);
-
-			vec_postos.insere((Posto*) a.clone());
-			}
-		
-			
-		}
-
-	
-	}
-	*/
-	/*---------------------------------------------------------------------------------------*/
-
-	/*
-	origem.close();
-	return 0;
-}
- */

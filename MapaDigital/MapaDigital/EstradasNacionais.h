@@ -13,6 +13,7 @@ class EstradasNacionais : public ViasLigacao
 		EstradasNacionais(const EstradasNacionais &en);
 		EstradasNacionais(string cod,double totalVia,double tMedio,string tipoPav);
 		~EstradasNacionais();
+		virtual ViasLigacao * clone() const;
 
 		//SET's e GET's
 		void setTipoPavimento(string tipoPav);
@@ -40,6 +41,13 @@ EstradasNacionais::EstradasNacionais(string cod,double totalVia,double tMedio,st
 }
 
 EstradasNacionais::~EstradasNacionais(){}
+
+
+ViasLigacao * EstradasNacionais::clone() const{
+	return new EstradasNacionais(*this);
+}
+
+
 
 EstradasNacionais::EstradasNacionais(const EstradasNacionais &en)
 {

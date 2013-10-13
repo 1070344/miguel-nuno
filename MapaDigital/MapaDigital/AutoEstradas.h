@@ -11,6 +11,7 @@ class AutoEstradas : public ViasLigacao
 		AutoEstradas(const AutoEstradas &ae);
 		AutoEstradas(string cod,double totalVia,double tempMedio,double preco);
 		~AutoEstradas();
+		virtual ViasLigacao * clone() const;
 
 		//SET's e GET's
 		void setPrecoPortagem(double preco);
@@ -38,6 +39,12 @@ AutoEstradas::AutoEstradas(string cod,double totalVia,double tMedio,double preco
 }
 
 AutoEstradas::~AutoEstradas(){}
+
+
+ViasLigacao * AutoEstradas::clone() const{
+	return new AutoEstradas(*this);
+}
+
 
 AutoEstradas::AutoEstradas(const AutoEstradas &ae)
 {

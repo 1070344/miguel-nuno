@@ -15,6 +15,7 @@ class LocaisHistoricosCulturais : public Locais
 		LocaisHistoricosCulturais(const LocaisHistoricosCulturais &locHist);
 		LocaisHistoricosCulturais(string desc,int tempoVisita,int horarioAbertura,int horarioEncerramento);
 		~LocaisHistoricosCulturais();
+		virtual Locais * clone() const;
 
 		//SET's e GET's
 		void setTempoVisita(int tVisita);
@@ -51,6 +52,13 @@ LocaisHistoricosCulturais::LocaisHistoricosCulturais(const LocaisHistoricosCultu
 	setHorarioAbertura(locHist.horarioAbertura);
 	setHorarioEncerramento(locHist.horarioEncerramento);
 }
+
+
+
+Locais * LocaisHistoricosCulturais::clone() const{
+	return new LocaisHistoricosCulturais(*this);
+}
+
 
 
 void LocaisHistoricosCulturais::setTempoVisita(int tVisita)

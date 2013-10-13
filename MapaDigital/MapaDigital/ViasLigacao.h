@@ -42,7 +42,6 @@ class ViasLigacao
 		virtual void inserirViaLigacao(ViasLigacao * v);
 		virtual void contarVias() const;
 		virtual void escreve(ostream & out);
-		virtual ViasLigacao * clone() const=0;
 
 		//Sobrecarga de operadores
 		/*ViasLigacao & operator =(const ViasLigacao &vias);
@@ -81,11 +80,10 @@ ViasLigacao::~ViasLigacao()
 }
 
 
-ViasLigacao * ViasLigacao::clone() const{
-	ViasLigacao * v = new ViasLigacao(*this);
-	return v;
+ViasLigacao * ViasLigacao::clone() const
+{
+	return new ViasLigacao(*this);
 }
-
 
 
 

@@ -33,7 +33,7 @@ class Ficheiro
 		Ficheiro();
 		Ficheiro(const Ficheiro &fx);
 		Ficheiro(string nome);
-		~Ficheiro();
+		virtual ~Ficheiro();
 
 
 		void setNomeFicheiro(string nome);
@@ -50,6 +50,9 @@ Ficheiro::Ficheiro()
 	nomeFicheiro = "";
 }
 
+Ficheiro::~Ficheiro(){}
+
+
 Ficheiro::Ficheiro(string nome)
 {
 	nomeFicheiro = nome;
@@ -60,6 +63,13 @@ Ficheiro::Ficheiro(const Ficheiro &fx)
 
 	setNomeFicheiro(fx.nomeFicheiro);
 }
+
+
+void Ficheiro::setNomeFicheiro(string nome)
+{
+	nomeFicheiro = nome;
+}
+
 
 
 void Ficheiro::FicheiroLocais()
@@ -135,7 +145,7 @@ void Ficheiro::FicheiroLocais()
 				token= strtok(NULL,","); // Lê o próximo para verificar se contêm mais locais
 			}
 			Locais *ln= new LocaisNaturais(desc,area); // Cria um local turistico natural
-			Locais *lhc = new LocaisHistoricosCulturais(desc,tVisita,abertura,encerramento); // Cria um local turistico natural
+			Locais *lhc = new LocaisHistoricosCulturais(desc,tVisita,abertura,encerramento); // Cria um local historico
 			totalLocais=0; 
 			n=0;	
 		}	

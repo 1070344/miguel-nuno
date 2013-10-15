@@ -64,5 +64,10 @@ string EstradasNacionais::getTipoPavimento() const
 	return tipoPavimento;
 }
 
+void EstradasNacionais::escreve(ostream &out){
+	ViasLigacao::escreve(cout);
+	cout << " Tipo Pagvimento " << tipoPavimento;
+}
+
 
 #endif

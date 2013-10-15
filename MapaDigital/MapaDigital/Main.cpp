@@ -28,8 +28,9 @@ int lerFicheiroLocais(Locais vecLocais)
 	char *aux;
 	string aux1;
 	LocaisHistoricosCulturais locHist;
+	LocaisNaturais locNat;
 	int numLocais;
-	int nlinhas= 0;
+	int nLinhas= 0;
 
 	origem.open("Ficheiro1.txt");
 	if (!origem){
@@ -40,59 +41,54 @@ int lerFicheiroLocais(Locais vecLocais)
 
 
 
-	while (!origem.eof()){
-		getline(origem, linha, '\n');
+	while (!origem.eof())
+	{
+				getline(origem, linha, '\n');
 	
-		if(linha.size() > 0)
-		{
-	
-			if(nlinhas == 0)
-			{
-				int inic=0;
-				int pos=linha.find(',', inic);	
-				aux1 = linha.substr(inic,pos-inic);
-				aux = &aux1[0];
-				numLocais = atoi(aux);
-				pos++;
-				nlinhas++;
-			}
-			else
-			{
-				//descrição
-				int inic=0;
-				int pos=linha.find(',', inic);
-				locHist.setDescricao((linha.substr(inic, pos-inic)));
-				pos++;
+					int inic=0;
+					int pos=linha.find(',', inic);
+					aux1 = linha.substr(inic,pos-inic);
+					aux = &aux1[0];
+					cout << aux << ",";
+					pos++;
+					nLinhas++;
+				
+					//descrição
+					inic=0;
+					pos=linha.find(',', inic);
+					locHist.setDescricao((linha.substr(inic, pos-inic)));
+					pos++;
+			
+					//area OU tempo medio
+					inic = pos;
+					pos=linha.find(',', inic);
+					aux1 = linha.substr(inic,pos-inic);
+					aux = &aux1[0];
+					cout << aux << ",";
+					locHist.setTempoVisita(atoi(aux));
+					pos++;
+					
+					//hora de abertura
+					inic = pos;
+					pos=linha.find(',', inic);
+					aux1 = linha.substr(inic,pos-inic);
+					aux = &aux1[0];
+					cout << aux << ",";
+					locHist.setHorarioAbertura(atoi(aux));
+					pos++;
+				
 
-				//area OU tempo medio
-				inic = pos;
-				pos=linha.find(',', inic);
-				aux1 = linha.substr(inic,pos-inic);
-				aux = &aux1[0];
-				locHist.setTempoVisita(atof(aux));
-				pos++;
-
-				//hora de abertura
-				inic = pos;
-				pos=linha.find(',', inic);
-				aux1 = linha.substr(inic,pos-inic);
-				aux = &aux1[0];
-				locHist.setHorarioAbertura(atoi(aux));
-				pos++;
-
-				//hora de encerramento
-				inic = pos;
-				pos=linha.find(',', inic);
-				aux1 = linha.substr(inic,pos-inic);
-				aux = &aux1[0];
-				locHist.setHorarioEncerramento(atoi(aux));
-
-				//invocar metodo para inserir os locais no vector
-			}
+					//hora de encerramento
+					inic = pos;
+					pos=linha.find(',', inic);
+					aux1 = linha.substr(inic,pos-inic);
+					aux = &aux1[0];
+					cout << aux << endl;//primeira string
+					locHist.setHorarioEncerramento(atoi(aux));
 		}
-	}
-	origem.close();
-	return 0;
+		cout << "TOTAL DE LOCAIS: " << nLinhas << endl;
+		origem.close();
+		return 0;
 }
  
 
@@ -103,13 +99,8 @@ int lerFicheiroLocais(Locais vecLocais)
 
 int main()
 {
-	
-
-	Ficheiro fx;
 	char sel;
 	Locais vecLocais;
-
-
 
 	//carregar dados para a memoria
 	lerFicheiroLocais(vecLocais);//carregar locais para a memória
@@ -120,8 +111,8 @@ int main()
 	cout << "------------------------------------" << endl;
 	cout << "------------------------------------" << endl;
 	cout << "Selecione uma opcao" << endl;
-    cout << "1. Inserir locais a partir de um ficheiro de texto" << endl;
-    cout << "2. Inserir vias de ligacao a partir do ficheiro" << endl;
+    cout << "1. Inserir um local" << endl;
+    cout << "2. Inserir uma viade ligacao" << endl;
 	cout << "3. Contabilizar os locais historicos e naturais por ordem alfabetica da sua descricao" << endl;
 	cout << "0. Fechar programa\n" << endl;
 	cout << "Opcao: ";

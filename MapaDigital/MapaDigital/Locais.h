@@ -62,7 +62,12 @@ Locais::~Locais(){}
 
 Locais * Locais::clone() const
 {
-	return new Locais(*this);
+	Locais * l = new Locais(*this);
+	return l;
+}
+
+void Locais::setDescricao(string d){
+	desc = d;
 }
 
 
@@ -80,8 +85,10 @@ void Locais::contarLocais() const
 
 void Locais::inserirLocal()const
 {
-	cout << "" << endl;
+	cout << "ola" << endl;
 }
+
+
 
 
 

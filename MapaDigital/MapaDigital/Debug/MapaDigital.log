@@ -1,33 +1,28 @@
-﻿Build started 13/10/2013 23:11:12.
+﻿Build started 15/10/2013 01:21:52.
      1>Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(103): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(113): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(106): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(116): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(109): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(119): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(117): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(127): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(135): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(145): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\main.cpp(72): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(137): warning C4700: uninitialized local variable 'area' used
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(138): warning C4700: uninitialized local variable 'encerramento' used
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(138): warning C4700: uninitialized local variable 'abertura' used
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(138): warning C4700: uninitialized local variable 'tVisita' used
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\main.cpp(32): warning C4101: 'numLocais' : unreferenced local variable
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(147): warning C4700: uninitialized local variable 'area' used
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(148): warning C4700: uninitialized local variable 'encerramento' used
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(148): warning C4700: uninitialized local variable 'abertura' used
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(148): warning C4700: uninitialized local variable 'tVisita' used
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.lib" /MACHINE:X86 Debug\Main.obj
-     1>Main.obj : error LNK2019: unresolved external symbol "public: void __thiscall Locais::setDescricao(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?setDescricao@Locais@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: __thiscall Locais::Locais(class Locais const &)" (??0Locais@@QAE@ABV0@@Z)
-     1>Main.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall LocaisHistoricosCulturais::~LocaisHistoricosCulturais(void)" (??1LocaisHistoricosCulturais@@UAE@XZ) referenced in function "public: virtual void * __thiscall LocaisHistoricosCulturais::`scalar deleting destructor'(unsigned int)" (??_GLocaisHistoricosCulturais@@UAEPAXI@Z)
-     1>Main.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall EstradasNacionais::escreve(class std::basic_ostream<char,struct std::char_traits<char> > &)" (?escreve@EstradasNacionais@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z)
-     1>Main.obj : error LNK2019: unresolved external symbol "public: __thiscall Ficheiro::~Ficheiro(void)" (??1Ficheiro@@QAE@XZ) referenced in function _main
-     1>Main.obj : error LNK2019: unresolved external symbol "public: void __thiscall Ficheiro::setNomeFicheiro(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?setNomeFicheiro@Ficheiro@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: __thiscall Ficheiro::Ficheiro(class Ficheiro const &)" (??0Ficheiro@@QAE@ABV0@@Z)
-     1>C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.exe : fatal error LNK1120: 5 unresolved externals
-     1>Done Building Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)) -- FAILED.
+         MapaDigital.vcxproj -> C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.exe
+     1>Done Building Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:02.46
+Time Elapsed 00:00:03.14

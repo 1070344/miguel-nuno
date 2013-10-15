@@ -6,10 +6,9 @@
 class LocaisHistoricosCulturais : public Locais
 {
 	private:
-		int tempoVisita;//tempo medio de visita em minutos
-		int horarioAbertura;//em minutos
-		int horarioEncerramento;//em minutos
-	
+		int tempoVisita;
+		int horarioAbertura;
+		int horarioEncerramento;
 	public:
 		LocaisHistoricosCulturais();
 		LocaisHistoricosCulturais(const LocaisHistoricosCulturais &locHist);
@@ -25,9 +24,9 @@ class LocaisHistoricosCulturais : public Locais
 		int getTempoVisita()const;
 		int getHorarioAbertura()const;
 		int getHorarioEncerramento()const;
-
-		
 };
+
+
 
 LocaisHistoricosCulturais::LocaisHistoricosCulturais()
 {
@@ -45,7 +44,6 @@ LocaisHistoricosCulturais::LocaisHistoricosCulturais(string desc,int tVisita,int
 }
 
 
-
 LocaisHistoricosCulturais::LocaisHistoricosCulturais(const LocaisHistoricosCulturais &locHist)
 {
 	setTempoVisita(locHist.tempoVisita);
@@ -53,7 +51,7 @@ LocaisHistoricosCulturais::LocaisHistoricosCulturais(const LocaisHistoricosCultu
 	setHorarioEncerramento(locHist.horarioEncerramento);
 }
 
-
+LocaisHistoricosCulturais::~LocaisHistoricosCulturais(){}
 
 Locais * LocaisHistoricosCulturais::clone() const{
 	return new LocaisHistoricosCulturais(*this);
@@ -77,5 +75,20 @@ void LocaisHistoricosCulturais::setHorarioEncerramento(int encerramento)
 	horarioEncerramento = encerramento;
 }
 
+
+int LocaisHistoricosCulturais::getTempoVisita()const
+{
+	return tempoVisita;
+}
+
+int LocaisHistoricosCulturais::getHorarioAbertura()const
+{
+	return horarioAbertura;
+}
+
+int LocaisHistoricosCulturais::getHorarioEncerramento()const
+{
+	return horarioEncerramento;
+}
 
 #endif

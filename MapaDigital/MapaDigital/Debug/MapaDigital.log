@@ -1,28 +1,15 @@
-﻿Build started 15/10/2013 01:21:52.
+﻿Build started 16/10/2013 14:35:00.
      1>Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(113): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(116): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(119): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(127): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(145): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(200) : see declaration of 'strtok'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\main.cpp(32): warning C4101: 'numLocais' : unreferenced local variable
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(147): warning C4700: uninitialized local variable 'area' used
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(148): warning C4700: uninitialized local variable 'encerramento' used
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(148): warning C4700: uninitialized local variable 'abertura' used
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(148): warning C4700: uninitialized local variable 'tVisita' used
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.lib" /MACHINE:X86 Debug\Main.obj
-         MapaDigital.vcxproj -> C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.exe
-     1>Done Building Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)).
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\main.cpp(91): error C2228: left of '.inserirLocal' must have class/struct/union
+                 type is 'Locais *'
+                 did you intend to use '->' instead?
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\main.cpp(110): error C2664: 'lerFicheiroLocais' : cannot convert parameter 1 from 'Locais' to 'Locais *'
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>Done Building Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:03.14
+Time Elapsed 00:00:01.61

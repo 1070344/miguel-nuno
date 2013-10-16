@@ -1,157 +1,148 @@
 #ifndef Ficheiro_
 #define Ficheiro_
 
-#include<iostream>
-#include <string>
+#include <iostream>
 #include <fstream>
-
-using namespace std;
-
-
+#include "Queue.h"
 #include "Locais.h"
 #include "LocaisHistoricosCulturais.h"
 #include "LocaisNaturais.h"
-#include "ViasLigacao.h"
-#include "AutoEstradas.h"
-#include "EstradasNacionais.h"
 
 
 class Ficheiro
 {
-
 	private:
-		int n;
-		int tam;
-		int cont; // Contador para Locais
-		char linha[1024]; // Linha com um maximo de 1024 chars
-		char *token; // Recebe o valor do split da linha
-		Locais **local; // Vector de Locais
-		string nomeFicheiro;
-
-
+		Queue<Locais*> locais;
+		int tamM;
 	public:
 		Ficheiro();
-		Ficheiro(const Ficheiro &fx);
-		Ficheiro(string nome);
-		virtual ~Ficheiro();
+		Ficheiro(const Ficheiro &f);
+		~Ficheiro();
 
-
-		void setNomeFicheiro(string nome);
-		string getNomeFicheiro()const;
-		
-		void FicheiroLocais();
-
-
+		void inserirLocais(Locais *loc);
+		int fillDataLocais(string nameFx);
+		int fillDataLocaisTuristicos(string nameFx);
+		int fillData(string nameFx1,string nameFx2);
+		void escreve(ostream &out) const;
 };
 
 
 Ficheiro::Ficheiro()
 {
-	nomeFicheiro = "";
+	tamM=10;
+}
+Ficheiro::Ficheiro(const Ficheiro &f)
+{
+	locais=f.locais;
+	tamM=f.tamM;
 }
 
 Ficheiro::~Ficheiro(){}
 
 
-Ficheiro::Ficheiro(string nome)
+
+//inserir posto no vector de locais
+void Ficheiro::inserirLocais(Locais *loc)
 {
-	nomeFicheiro = nome;
-}
-
-Ficheiro::Ficheiro(const Ficheiro &fx)
-{
-
-	setNomeFicheiro(fx.nomeFicheiro);
-}
-
-
-void Ficheiro::setNomeFicheiro(string nome)
-{
-	nomeFicheiro = nome;
+	locais.insere(loc);
 }
 
 
 
-void Ficheiro::FicheiroLocais()
+void Ficheiro::escreve(ostream& out) const
+{	
+	cout << "Locais:" << endl;
+	locais.escreve(cout);
+}
+
+
+
+//Carregamento de todos os ficheiros
+int Ficheiro::fillData(string nameFx1,string nameFx2){
+	int nLocais=fillDataLocais(nameFx1);
+	if(nLocais<0){
+		cerr << "Erro a carregar os locais." << endl;
+		return -1;
+	}
+	
+	
+	return 0;
+}
+
+
+//Carregamento de locais historicos e culturais
+int Ficheiro::fillDataLocaisTuristicos(string nameFx)
 {
-		/*
-			FICHEIRO LOCAIS 
+	//Parte Leitura de Ficheiros
+	int cont=0;
+	ifstream origem;
+	string linha;
+	
+	
+	origem.open("Ficheiro1.txt");
+	if(!origem){
+		cerr<<"Erro a abrir ficheiro\n";
+		return -1;
+	}
 
-			[[[Locais Turisticos Historico Culturais]]]
+	getline(origem, linha,'\n');
+	while(!origem.eof())
+	{
+		getline(origem,linha,'\n');
+		if(linha.size() > 0)
+		{
+			int inic=0;
+			int pos=linha.find(',',inic);
+			string desc(linha.substr(inic,pos-inic));
+			pos++;
 
-			DESCRIÇÃO		TEMP.MEDIO.VISITA			HORARIO_ABERTURA						HORARIO_ENCERRAMENTO
-			Serralves		130 minutos					15h25m = 15*60+25 = 925 minutos			18h40m = 18*60+40 = 1120 minutos
-		--->PORTANTO FICA: Serralves,130,925,1120
+			inic=pos;
+			pos=linha.find(',',inic);
+			string tempoVisita(linha.substr(inic,pos-inic));
+			pos++;
+
+			inic=pos;
+			pos=linha.find(',',inic);
+			string horAbertura(linha.substr(inic,pos-inic));
+			pos++;
+
+			inic=pos;
+			pos=linha.find(',',inic);
+			string horEncerramento(linha.substr(inic,pos-inic));
+			pos++;
+
+			//Parte Adição de informação
+			char *aux=&tempoVisita[0];
+			int tVisita=atoi(aux);
+
+			char *aux=&horAbertura[0];
+			int hAbertura=atoi(aux);
+
+			char *aux=&horEncerramento[0];
+			int hEncerramento=atoi(aux);
 
 			
-			[[[Locais Turisticos Naturais]]]
-
-			DESCRIÇÃO		ÁREA(km2)
-			Sé do Porto		200
-		--->PORTANTO FICA: Sé do Porto,200
-
-
-		*/
-	string desc;
-	double area;
-	int tVisita;
-	int abertura;
-	int encerramento;
-	int totalLocais = 0;
-	string nomefich1="Ficheiro1.txt";	//ficheiro dos locais
-	ifstream ler(nomefich1.c_str()); // Verifica se o Ficheiro existe
-	
-	if (!ler)
-	{
-		cout << "Erro na leitura do Ficheiro dos Locais!" << endl << endl;			
-	
-	}
-	else 
-	{
-		while (ler.getline(linha,1024)!=NULL)// Fazer o Split de cada linha pela ',' para criação do objecto
-		{	 	
-			token=strtok(linha,",");
-			string chave2= token;
-
-			token=strtok(NULL,",");
-			string designa2= token;
-
-			token=strtok(NULL,",");
-
 			
 
 
-			while(token!=NULL) // Verifica se o ficheiro tem locais
-			{	
-				int descj=atoi(token);
-				token = strtok (NULL, ",");
-				int capa= atoi(token);	
-				
-				Locais *loc = new Locais(desc); // Cria um local turistico natural
-				totalLocais++; // Incrementa o numero de locais			
-				if(n==tam)//verifica se o tamanho do vector é igual ao tamanho maximo
-				{	
-					Locais **aux=new Locais*[2*tam]; // Cria um Vector auxiliar para fazer copia do vector original
-					for(int j=0;j<n;j++)
-					{
-						aux[j]=local[j];
-					}
-					tam=2*tam; // Duplicação do tamanho máximo 
-					delete[]local;
-					local=aux;
-				}
-				local[n]=loc->clone(); // Chamar clone do Objecto
-				n++; // Incrementar as posicoes vector
-				token= strtok(NULL,","); // Lê o próximo para verificar se contêm mais locais
-			}
-			Locais *ln= new LocaisNaturais(desc,area); // Cria um local turistico natural
-			Locais *lhc = new LocaisHistoricosCulturais(desc,tVisita,abertura,encerramento); // Cria um local historico
-			totalLocais=0; 
-			n=0;	
-		}	
+			LocaisHistoricosCulturais *locAux = new LocaisHistoricosCulturais(desc,tVisita,hAbertura,hEncerramento);
+			inserirLocais(locAux);
+			cont++;
+		}
 	}
-	ler.close();
+	origem.close();
+	return cont;
 }
+
+
+
+
+ostream & operator << (ostream& out, const Ficheiro *f)
+{
+	f->escreve(out);
+	return out;
+}
+
 
 
 #endif

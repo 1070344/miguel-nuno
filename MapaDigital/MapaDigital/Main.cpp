@@ -15,6 +15,7 @@
 #include "Ficheiro.h"
 
 
+
  
 
 
@@ -29,12 +30,11 @@ int lerFicheiroLocais(Locais vecLocais)
 	string aux1;
 	LocaisHistoricosCulturais locHist;
 	LocaisNaturais locNat;
-	int numLocais;
 	int nLinhas= 0;
 
 	origem.open("Ficheiro1.txt");
 	if (!origem){
-		cerr << "Erro a abrir ficheiro dos locais\n";
+		cerr << "Erro ao abrir ficheiro dos locais\n";
 		return -1;
 	}
 
@@ -45,6 +45,9 @@ int lerFicheiroLocais(Locais vecLocais)
 	{
 				getline(origem, linha, '\n');
 	
+
+
+					//descrição
 					int inic=0;
 					int pos=linha.find(',', inic);
 					aux1 = linha.substr(inic,pos-inic);
@@ -53,7 +56,7 @@ int lerFicheiroLocais(Locais vecLocais)
 					pos++;
 					nLinhas++;
 				
-					//descrição
+					
 					inic=0;
 					pos=linha.find(',', inic);
 					locHist.setDescricao((linha.substr(inic, pos-inic)));
@@ -83,10 +86,12 @@ int lerFicheiroLocais(Locais vecLocais)
 					pos=linha.find(',', inic);
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
-					cout << aux << endl;//primeira string
+					cout << aux << endl;
 					locHist.setHorarioEncerramento(atoi(aux));
+
+					vecLocais.inserirLocal((Locais *) locHist.clone());
+					
 		}
-		cout << "TOTAL DE LOCAIS: " << nLinhas << endl;
 		origem.close();
 		return 0;
 }
@@ -100,47 +105,43 @@ int lerFicheiroLocais(Locais vecLocais)
 int main()
 {
 	char sel;
-	Locais vecLocais;
+	Ficheiro fx;
 
 	//carregar dados para a memoria
-	lerFicheiroLocais(vecLocais);//carregar locais para a memória
+	lerFicheiroLocais(*vecLocais);//carregar locais para a memória
 
-	cout << "------------------------------------" << endl;
-	cout << "------------------------------------" << endl;
-    cout << "       M A P A   D I G I T A L       " << endl;
-	cout << "------------------------------------" << endl;
-	cout << "------------------------------------" << endl;
+	cout << "----------------------------------------------------" << endl;
+	cout << "----------------------------------------------------" << endl;
+    cout << "---------------M A P A   D I G I T A L--------------" << endl;
+	cout << "----------------------------------------------------" << endl;
+	cout << "----------------------------------------------------" << endl;
 	cout << "Selecione uma opcao" << endl;
     cout << "1. Inserir um local" << endl;
-    cout << "2. Inserir uma viade ligacao" << endl;
-	cout << "3. Contabilizar os locais historicos e naturais por ordem alfabetica da sua descricao" << endl;
+    cout << "2. Inserir uma via de ligacao" << endl;
+	cout << "3. Mostar todos os locais" << endl;
 	cout << "0. Fechar programa\n" << endl;
 	cout << "Opcao: ";
 	
     cin >> sel;
 	
 
-    switch(sel){
+    switch(sel)
+	{
         case '1':
-			cout << "Opcao 1 " << endl;
 			
 			break;
  
         case '2':
-            cout << "Opcao 2 " << endl;
-			break;
+            break;
                 
 		case '3':
-			cout << "Opcao 3" << endl;
+			system("pause");
 			break;
 
-			case '0':
-			cout << "Opcao 0" << endl;
+		case '0':
 			system("exit");
 			break;
  	}
 
 
-
-	system("pause");
 }

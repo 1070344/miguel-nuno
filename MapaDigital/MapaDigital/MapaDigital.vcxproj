@@ -85,6 +85,7 @@
     <ClInclude Include="Locais.h" />
     <ClInclude Include="LocaisHistoricosCulturais.h" />
     <ClInclude Include="LocaisNaturais.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="ViasLigacao.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

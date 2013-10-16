@@ -41,7 +41,7 @@ class ViasLigacao
 		//Métodos da classe
 		virtual void inserirViaLigacao(ViasLigacao * v);
 		virtual void contarVias() const;
-		virtual void escreve(ostream & out);
+		virtual void escrever(ostream & out);
 
 		//Sobrecarga de operadores
 		/*ViasLigacao & operator =(const ViasLigacao &vias);
@@ -193,7 +193,7 @@ void ViasLigacao::contarVias() const
 
 
 
-void ViasLigacao::escreve(ostream & out)
+void ViasLigacao::escrever(ostream & out)
 {  
 	/*for (int i=0; i<actual; i++)
 	{ 

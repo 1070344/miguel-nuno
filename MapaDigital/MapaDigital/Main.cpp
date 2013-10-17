@@ -12,7 +12,6 @@
 #include "ViasLigacao.h"
 #include "AutoEstradas.h"
 #include "EstradasNacionais.h"
-#include "Ficheiro.h"
 
 
 
@@ -34,7 +33,7 @@ int lerFicheiroLocais(Locais vecLocais)
 
 	origem.open("Ficheiro1.txt");
 	if (!origem){
-		cerr << "Erro ao abrir ficheiro dos locais\n";
+		cerr << "Erro a abrir ficheiro dos locais\n";
 		return -1;
 	}
 
@@ -105,7 +104,7 @@ int lerFicheiroLocais(Locais vecLocais)
 int main()
 {
 	char sel;
-	Ficheiro fx;
+	Locais *vecLocais = new Locais[10];
 
 	//carregar dados para a memoria
 	lerFicheiroLocais(*vecLocais);//carregar locais para a memória

@@ -1,7 +1,7 @@
 #ifndef LocaisHistoricosCulturais_
 #define LocaisHistoricosCulturais_
 
-
+#include "Locais.h"
 
 class LocaisHistoricosCulturais : public Locais
 {
@@ -24,71 +24,7 @@ class LocaisHistoricosCulturais : public Locais
 		int getTempoVisita()const;
 		int getHorarioAbertura()const;
 		int getHorarioEncerramento()const;
+
+		void  escreve(ostream & out) const;	
 };
-
-
-
-LocaisHistoricosCulturais::LocaisHistoricosCulturais()
-{
-	tempoVisita = 0;
-	horarioAbertura = 0;
-	horarioEncerramento = 0;
-}
-
-
-LocaisHistoricosCulturais::LocaisHistoricosCulturais(string desc,int tVisita,int abertura,int encerramento) : Locais(desc)//desc=descrição - variavel da superclasse Locais
-{
-	tempoVisita = tVisita;
-	horarioAbertura = abertura;
-	horarioEncerramento = encerramento;
-}
-
-
-LocaisHistoricosCulturais::LocaisHistoricosCulturais(const LocaisHistoricosCulturais &locHist)
-{
-	setTempoVisita(locHist.tempoVisita);
-	setHorarioAbertura(locHist.horarioAbertura);
-	setHorarioEncerramento(locHist.horarioEncerramento);
-}
-
-LocaisHistoricosCulturais::~LocaisHistoricosCulturais(){}
-
-Locais * LocaisHistoricosCulturais::clone() const{
-	return new LocaisHistoricosCulturais(*this);
-}
-
-
-
-void LocaisHistoricosCulturais::setTempoVisita(int tVisita)
-{
-	tempoVisita = tVisita;
-}
-						
-
-void LocaisHistoricosCulturais::setHorarioAbertura(int abertura)
-{
-	horarioAbertura = abertura;
-}
-
-void LocaisHistoricosCulturais::setHorarioEncerramento(int encerramento)
-{
-	horarioEncerramento = encerramento;
-}
-
-
-int LocaisHistoricosCulturais::getTempoVisita()const
-{
-	return tempoVisita;
-}
-
-int LocaisHistoricosCulturais::getHorarioAbertura()const
-{
-	return horarioAbertura;
-}
-
-int LocaisHistoricosCulturais::getHorarioEncerramento()const
-{
-	return horarioEncerramento;
-}
-
 #endif

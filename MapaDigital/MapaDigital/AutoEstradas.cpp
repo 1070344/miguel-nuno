@@ -7,7 +7,7 @@ AutoEstradas::AutoEstradas()
 	precoPortagem = 0;
 }
 
-AutoEstradas::AutoEstradas(string cod,double totalVia,double tempMedio,string orig,string dest,double preco) : ViasLigacao(cod,totalVia,tempMedio,orig,dest)
+AutoEstradas::AutoEstradas(string orig,string dest,string cod,int totalVia,int tempMedio,double preco) : ViasLigacao(orig,dest,cod,totalVia,tempMedio)
 {
 	precoPortagem = preco;
 }
@@ -37,6 +37,7 @@ double AutoEstradas::getPrecoPortagem() const
 
 void AutoEstradas::escrever(ostream &out)const
 {
+	cout << "TIPO DE VIA: " << "Auto Estrada" << endl;
 	ViasLigacao::escrever(cout);
-	cout << "Preco Portagem: " << precoPortagem << endl;
+	cout << "PRECO DA PORTAGEM: " << precoPortagem << endl << endl;
 }

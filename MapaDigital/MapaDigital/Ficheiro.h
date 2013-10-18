@@ -19,24 +19,27 @@ using namespace std;
 
 class Ficheiro
 {
+	private:
+		int actual;
+		int tamanho;
+		Locais **vecLocais;
+		ViasLigacao **vecVias;
+	public:
+		Ficheiro();
+		Ficheiro(int t);
+		Ficheiro(const Ficheiro &f);
+		~Ficheiro();
 
-private:
-	int actual, tamM;
-	Locais **vecLocais;
-	//Estrada* *Estradas;
-public:
-	
-	Ficheiro();
-	Ficheiro(int d);
-	Ficheiro(const Ficheiro &f);
-	~Ficheiro();
+		void lerFicheiroLocais();
+		void inserirLocais(Locais *loc);
+		void contarTiposLocal();
+		void ordenar();
 
-	void inserirLocais(Locais *loc);
-	void lerFicheiroLocais();
-	void escrever(ostream& ostr) const;
-	void contarTiposLocal();
-	void ordenar();
+		void lerFicheiroVias();
+		void inserirVias(ViasLigacao *vias);
 
+		void escreverLocais(ostream& ostr) const;
+		void escreverVias(ostream& ostr) const;
 };
 
 #endif

@@ -1,5 +1,5 @@
 Caves Vinho do Porto,20,540,870
-Casa da Musica,120,600,999
 Museu da Cera,120,570,1110 
-Serralves,9000
 Torre dos Clerigos,2300
+Casa da Musica,120,600,999
+Serralves,9000

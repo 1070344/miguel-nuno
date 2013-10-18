@@ -10,7 +10,7 @@ class AutoEstradas : public ViasLigacao
 	public:
 		AutoEstradas();
 		AutoEstradas(const AutoEstradas &ae);
-		AutoEstradas(string cod,double totalVia,double tempMedio,string orig,string dest,double preco);
+		AutoEstradas(string orig,string dest,string cod,int totalVia,int tempMedio,double preco);
 		~AutoEstradas();
 		virtual ViasLigacao * clone() const;
 

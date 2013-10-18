@@ -25,8 +25,6 @@ class Locais
 		void setDescricao(string d);
 		string getDescricao()const;
 
-		//metodos da classe
-
 
 		/*Sobrecarga de operadores
 		Locais & operator =(const Locais &loc);

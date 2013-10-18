@@ -39,9 +39,9 @@ double LocaisNaturais::getArea()const
 
 void LocaisNaturais::escrever(ostream & out) const
 {  
-	cout << "TIPO LOCAL: " << "Natural" << endl;
+	cout << "TIPO DE LOCAL: " << "Natural" << endl;
 	Locais::escrever(cout);
-	cout << "AREA: " << area << endl << endl;
+	cout << "AREA: " << area << " km2 " << endl << endl;
 }
 
 

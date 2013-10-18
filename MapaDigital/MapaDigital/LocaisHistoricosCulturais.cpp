@@ -65,9 +65,9 @@ int LocaisHistoricosCulturais::getHorarioEncerramento()const
 
 void LocaisHistoricosCulturais::escrever(ostream & out) const
 {  
-	cout << "TIPO LOCAL: " << "Historico Cultural" << endl;
+	cout << "TIPO DE LOCAL: " << "Historico Cultural" << endl;
 	Locais::escrever(cout);
-	cout << "TEMPO DE VISITA: " << tempoVisita << endl;
-	cout << "HORARIO DE ABERTURA: " << horarioAbertura << endl;
-	cout << "HORARIO DE ENCERRAMENTO: " << horarioEncerramento << endl << endl;
+	cout << "TEMPO MEDIO DE VISITA: " << tempoVisita << " minutos" << endl;
+	cout << "HORARIO DE ABERTURA: " << horarioAbertura << "h" << endl;
+	cout << "HORARIO DE ENCERRAMENTO: " << horarioEncerramento << "h" << endl << endl;
 }

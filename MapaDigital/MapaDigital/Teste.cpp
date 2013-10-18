@@ -13,43 +13,48 @@
 #include "AutoEstradas.h"
 #include "EstradasNacionais.h"
 
+
+
+
 int main()
 {
+	
+	cout << "---------------M A P A   D I G I T A L--------------" << endl;
+	cout << "-----------------------------------------------------" << endl;
+
+
 	char sel;
-	Ficheiro f(100);
-
-	//carregar dados para a memoria
+	Ficheiro f1(10);
+	Ficheiro f2(10);
 	
-	f.lerFicheiroLocais();
-	f.ordenar();
-
-	cout << "----------------------------------------------------" << endl;
-	cout << "----------------------------------------------------" << endl;
-    cout << "---------------M A P A   D I G I T A L--------------" << endl;
-	cout << "----------------------------------------------------" << endl;
-	cout << "----------------------------------------------------" << endl;
+	f1.lerFicheiroLocais();
+	f2.lerFicheiroVias();
+	
 	cout << "Selecione uma opcao" << endl;
-    cout << "1. Listagem de Locais (sem filtragem)" << endl;
-    cout << "2. Inserir uma via de ligacao" << endl;
-	cout << "3. Numero total de tipos de local" << endl;
-	cout << "0. Fechar programa\n" << endl;
+    cout << "1. Listagem dos locais" << endl;
+    cout << "2. Listagem da vias de ligacao" << endl;
+	cout << "3. Total de locais" << endl;
+	cout << "0. Sair do programa\n" << endl;
 	cout << "Opcao: ";
-	
-    cin >> sel;
-	
+	cin >> sel;
+	cout << endl; 
 
     switch(sel)
 	{
         case '1':
-			f.escrever(cout);
+			f1.escreverLocais(cout);
+			main();
 			break;
  
         case '2':
-            break;
+			f2.escreverVias(cout);
+			main();
+			break;
                 
 		case '3':
-			f.contarTiposLocal();
-			system("pause");
+			f1.ordenar();
+			f1.contarTiposLocal();
+			main();
 			break;
 
 		case '0':

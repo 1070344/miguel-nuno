@@ -2,7 +2,7 @@
 
 Locais::Locais()
 {
-	desc="";
+	desc = "vazio";
 }
 
 Locais::Locais(const Locais &loc)
@@ -25,11 +25,13 @@ Locais * Locais::clone() const
 	return new Locais (*this);
 }
 
-void Locais::setDescricao(const string d){
+void Locais::setDescricao(const string d)
+{
 	desc = d;
 }
 
-string Locais::getDescricao()const{
+string Locais::getDescricao()const
+{
 	return desc;
 }
 

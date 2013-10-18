@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClCompile Include="AutoEstradas.cpp" />
     <ClCompile Include="EstradasNacionais.cpp" />
+    <ClCompile Include="Ficheiro.cpp" />
     <ClCompile Include="Locais.cpp" />
     <ClCompile Include="LocaisHistoricosCulturais.cpp" />
     <ClCompile Include="LocaisNaturais.cpp" />
@@ -87,6 +88,7 @@
   <ItemGroup>
     <ClInclude Include="AutoEstradas.h" />
     <ClInclude Include="EstradasNacionais.h" />
+    <ClInclude Include="Ficheiro.h" />
     <ClInclude Include="Locais.h" />
     <ClInclude Include="LocaisHistoricosCulturais.h" />
     <ClInclude Include="LocaisNaturais.h" />

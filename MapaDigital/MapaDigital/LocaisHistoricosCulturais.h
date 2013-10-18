@@ -1,7 +1,14 @@
 #ifndef LocaisHistoricosCulturais_
 #define LocaisHistoricosCulturais_
 
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+#include <string.h>
+
 #include "Locais.h"
+
 
 class LocaisHistoricosCulturais : public Locais
 {
@@ -12,9 +19,9 @@ class LocaisHistoricosCulturais : public Locais
 	public:
 		LocaisHistoricosCulturais();
 		LocaisHistoricosCulturais(const LocaisHistoricosCulturais &locHist);
-		LocaisHistoricosCulturais(string desc,int tempoVisita,int horarioAbertura,int horarioEncerramento);
+		LocaisHistoricosCulturais(string d,int tempoVisita,int horarioAbertura,int horarioEncerramento);
 		~LocaisHistoricosCulturais();
-		virtual Locais * clone() const;
+		LocaisHistoricosCulturais * clone() const;
 
 		//SET's e GET's
 		void setTempoVisita(int tVisita);
@@ -25,6 +32,6 @@ class LocaisHistoricosCulturais : public Locais
 		int getHorarioAbertura()const;
 		int getHorarioEncerramento()const;
 
-		void  escreve(ostream & out) const;	
+		void escrever(ostream & out) const;	
 };
 #endif

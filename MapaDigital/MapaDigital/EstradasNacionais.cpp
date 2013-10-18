@@ -4,10 +4,10 @@
 
 EstradasNacionais::EstradasNacionais()
 {
-	tipoPavimento = "não definido";
+	tipoPavimento = "vazio";
 }
 
-EstradasNacionais::EstradasNacionais(string cod,double totalVia,double tMedio,string tipoPav) : ViasLigacao(cod,totalVia,tMedio)
+EstradasNacionais::EstradasNacionais(string cod,double totalVia,double tempMedio,string orig,string dest,string tipoPav) : ViasLigacao(cod,totalVia,tempMedio,orig,dest)
 {
 	tipoPavimento = tipoPav;
 }
@@ -36,8 +36,9 @@ string EstradasNacionais::getTipoPavimento() const
 	return tipoPavimento;
 }
 
-void EstradasNacionais::escreve(ostream &out){
+void EstradasNacionais::escrever(ostream &out)const
+{
 	ViasLigacao::escrever(cout);
-	cout << " Tipo Pavimento " << tipoPavimento;
+	cout << "Tipo Pavimento: " << tipoPavimento << endl;
 }
 

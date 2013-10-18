@@ -10,7 +10,7 @@ class AutoEstradas : public ViasLigacao
 	public:
 		AutoEstradas();
 		AutoEstradas(const AutoEstradas &ae);
-		AutoEstradas(string cod,double totalVia,double tempMedio,double preco);
+		AutoEstradas(string cod,double totalVia,double tempMedio,string orig,string dest,double preco);
 		~AutoEstradas();
 		virtual ViasLigacao * clone() const;
 
@@ -24,7 +24,7 @@ class AutoEstradas : public ViasLigacao
 		bool operator >(const AutoEstradas &ae);
 		bool operator <(const AutoEstradas &ae);
 		bool operator ==(const AutoEstradas &ae);
-		void escreve(ostream &out) const;
+		void escrever(ostream &out) const;
 		
 
 };

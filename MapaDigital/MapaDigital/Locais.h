@@ -9,31 +9,23 @@
 
 using namespace std;
 
-
-
 class Locais
 {
 	private:
-		string descricao;
-		int actual,dimensao;
-		Locais* *vec;
-
+		string desc;
 
 	public:
-		Locais(int dimensao = 20);
+		Locais();
 		Locais(const Locais &loc);
 		Locais(string desc);
 		virtual Locais * clone() const;	
 		virtual ~Locais();
 
 		//set's e get´s
-		void setDescricao(string desc);
+		void setDescricao(string d);
 		string getDescricao()const;
 
 		//metodos da classe
-		virtual void contarLocais(Locais *v);
-		virtual void inserirLocal(Locais *v);
-		virtual void listar()const;
 
 
 		/*Sobrecarga de operadores
@@ -41,7 +33,6 @@ class Locais
 		bool operator >(const Locais &loc);
 		bool operator <(const Locais &loc);
 		bool operator ==(const Locais &loc);*/
-		virtual void escrever(ostream & out);
-		void escreve (ostream & out) const;
+		virtual void escrever (ostream & out) const;
 };
 #endif

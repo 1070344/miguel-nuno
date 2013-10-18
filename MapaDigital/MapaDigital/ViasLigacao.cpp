@@ -7,15 +7,19 @@ ViasLigacao::ViasLigacao(){
 		codigo = "";
 		totalKilometrosVia = 0;
 		tempMedioPercurso = 0;
+		origem = "vazio";
+		destino = "vazio";
 		actual = 0;
 		tamanho = 0;
 }
 
-ViasLigacao::ViasLigacao(string cod,double totalVia,double tempMedio)
+ViasLigacao::ViasLigacao(string cod,double totalVia,double tempMedio,string orig,string dest)
 {
 	codigo = cod;
 	totalKilometrosVia = totalVia;
 	tempMedioPercurso = tempMedio;
+	origem = orig;
+	destino = dest;
 }
 
 
@@ -24,6 +28,8 @@ ViasLigacao::ViasLigacao(const ViasLigacao &vias)
 	setCodigoVia(vias.codigo);
 	setTotalKilometrosVia(vias.totalKilometrosVia);
 	setTempoMedioPercurso(vias.tempMedioPercurso);
+	setOrigem(vias.origem);
+	setDestino(vias.destino);
 }
 
 
@@ -56,6 +62,19 @@ void ViasLigacao::setTempoMedioPercurso(double tempMedio)
 }
 
 
+void ViasLigacao::setOrigem(string orig)
+{
+	origem = orig;
+}
+
+
+void ViasLigacao::setDestino(string dest)
+{
+	destino = dest;
+}
+
+
+
 string ViasLigacao::getCodigoVia() const
 {
 	return codigo;
@@ -71,6 +90,17 @@ double ViasLigacao::getTempoMedioPercurso() const
 	return tempMedioPercurso;
 }
 
+
+string ViasLigacao::getOrigem() const
+{
+	return origem;
+}
+
+
+string ViasLigacao::getDestino() const
+{
+	return destino;
+}
 
 
 
@@ -102,19 +132,8 @@ bool ViasLigacao::operator == (const ViasLigacao & vias)
 
 void ViasLigacao::inserirViaLigacao(ViasLigacao *v)
 {
-	/*Inserir as vias de ligação a partir de um ficheiro de texto com a informação estruturada do seguinte 
-	modo:
-				LocTurist1,LocTurist2,EN1,100,90,asfalto
-				LocTurist3,LocTurist7,EN2,55,35,paralelo
-				LocTurist2,LocTurist5,EN1,200,150,asfalto
-				…
-				LocTurist5,LocTurist2,A3,54,30,3.25
-				LocTurist4,LocTurist1,A1,120,60,13.25
-				LocTurist9,LocTurist6,A4,80,90,7.05
-				…
-				LocTurist1,LocTurist7,A2,65,40,4.15*/
 
-	if (actual == tamanho)//axo que nao ta bem pro que se pede.comfirmar......
+	if (actual == tamanho)
 	{
 		tamanho = 2* tamanho;
 		ViasLigacao * * vec_tmp = new ViasLigacao * [tamanho];
@@ -146,13 +165,13 @@ void ViasLigacao::contarVias() const
 
 
 
-void ViasLigacao::escrever(ostream & out)
+void ViasLigacao::escrever(ostream & out) const
 {  
-	/*for (int i=0; i<actual; i++)
-	{ 
-		if (typeid(*vec[i]) == typeid(AutoEstradas)) dynamic_cast <AutoEstradas *>(vec[i])->escreve(out); 
-		if (typeid(*vec[i]) == typeid(EstradasNacionais)) dynamic_cast <EstradasNacionais *>(vec[i])->escreve(out); 
-	} */
+	cout << "Origem: " << origem << endl;
+	cout << "Destino: " << destino << endl;
+	cout << "Codigo Estrada: " << codigo << endl;
+	cout << "Distancia: " << totalKilometrosVia << endl;
+	cout << "Tempo Medio: " << tempMedioPercurso << endl;
 }
 
 

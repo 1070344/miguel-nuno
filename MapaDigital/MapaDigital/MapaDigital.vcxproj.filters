@@ -36,6 +36,9 @@
     <ClCompile Include="LocaisNaturais.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ficheiro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Locais.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ViasLigacao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ficheiro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

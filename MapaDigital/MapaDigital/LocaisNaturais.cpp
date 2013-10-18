@@ -7,7 +7,7 @@ LocaisNaturais::LocaisNaturais()
 }
 
 
-LocaisNaturais::LocaisNaturais(string desc,double a) : Locais(desc)//desc=descrição - variavel da superclasse Locais
+LocaisNaturais::LocaisNaturais(string d,int a) : Locais(d)//desc=descrição - variavel da superclasse Locais
 {
 	area = a;
 }
@@ -15,19 +15,19 @@ LocaisNaturais::LocaisNaturais(string desc,double a) : Locais(desc)//desc=descri
 LocaisNaturais::~LocaisNaturais(){}
 
 
-LocaisNaturais::LocaisNaturais(const LocaisNaturais &locNat)
+LocaisNaturais::LocaisNaturais(const LocaisNaturais &locNat) : Locais(locNat)
 {
 	setArea(locNat.area);
 }
 
 
-Locais * LocaisNaturais::clone() const{
+LocaisNaturais * LocaisNaturais::clone() const{
 	return new LocaisNaturais(*this);
 }
 
 
 
-void LocaisNaturais::setArea(double a)
+void LocaisNaturais::setArea(int a)
 {
 	area = a;
 }
@@ -37,10 +37,11 @@ double LocaisNaturais::getArea()const
 	return area;
 }
 
-void LocaisNaturais::escreve(ostream & out) const
+void LocaisNaturais::escrever(ostream & out) const
 {  
-	Locais::escreve(cout);
-	cout << "Area: " << area << endl;
+	cout << "TIPO LOCAL: " << "Natural" << endl;
+	Locais::escrever(cout);
+	cout << "AREA: " << area << endl << endl;
 }
 
 

@@ -1,25 +1,24 @@
-﻿Build started 17/10/2013 13:30:27.
-     1>Project "C:\Users\Miguel\Documents\pastas_widows7\progs-novoPC\ISEP-TUDO\isep1314\ESINF\snake-tp-1213\MapaDigital\MapaDigital\MapaDigital.vcxproj" on node 2 (Build target(s)).
+﻿Build started 18/10/2013 14:47:35.
+     1>Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Locais.cpp LocaisHistoricosCulturais.cpp Teste.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Locais.cpp LocaisHistoricosCulturais.cpp LocaisNaturais.cpp Teste.cpp
+         Teste.cpp
+         LocaisNaturais.cpp
+         LocaisHistoricosCulturais.cpp
          Locais.cpp
          Generating Code...
-         Compiling...
-         Teste.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         LocaisHistoricosCulturais.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Miguel\Documents\pastas_widows7\progs-novoPC\ISEP-TUDO\isep1314\ESINF\snake-tp-1213\MapaDigital\Debug\MapaDigital.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Miguel\Documents\pastas_widows7\progs-novoPC\ISEP-TUDO\isep1314\ESINF\snake-tp-1213\MapaDigital\Debug\MapaDigital.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Miguel\Documents\pastas_widows7\progs-novoPC\ISEP-TUDO\isep1314\ESINF\snake-tp-1213\MapaDigital\Debug\MapaDigital.lib" /MACHINE:X86 Debug\AutoEstradas.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.lib" /MACHINE:X86 Debug\AutoEstradas.obj
          Debug\EstradasNacionais.obj
+         Debug\Ficheiro.obj
          Debug\Locais.obj
          Debug\LocaisHistoricosCulturais.obj
          Debug\LocaisNaturais.obj
          Debug\Teste.obj
          Debug\ViasLigacao.obj
-         MapaDigital.vcxproj -> C:\Users\Miguel\Documents\pastas_widows7\progs-novoPC\ISEP-TUDO\isep1314\ESINF\snake-tp-1213\MapaDigital\Debug\MapaDigital.exe
-     1>Done Building Project "C:\Users\Miguel\Documents\pastas_widows7\progs-novoPC\ISEP-TUDO\isep1314\ESINF\snake-tp-1213\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)).
+         MapaDigital.vcxproj -> C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.exe
+     1>Done Building Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.02
+Time Elapsed 00:00:06.08

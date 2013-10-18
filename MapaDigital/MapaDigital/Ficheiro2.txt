@@ -1,1 +1,6 @@
-dasdasdasd
+Caves Vinho do Porto,Casa da Musica,EN1,100,90,asfalto 
+Casa da Musica,Museu da Cera,EN2,55,35,paralelo 
+Museu da Cera,Serralves,EN1,200,150,terra batida
+Serralves,Torre dos Clerigos,A3,54,30,3.25 
+Torre dos Clerigos,Caves Vinho do Porto,A1,120,60,13.25 
+Serralves,Casa da Musica,A4,80,90,7.05

@@ -1,17 +1,14 @@
 #include "LocaisHistoricosCulturais.h"
 #include "Locais.h"
 
-
-
-LocaisHistoricosCulturais::LocaisHistoricosCulturais()
+LocaisHistoricosCulturais::LocaisHistoricosCulturais():Locais()
 {
 	tempoVisita = 0;
 	horarioAbertura = 0;
 	horarioEncerramento = 0;
 }
 
-
-LocaisHistoricosCulturais::LocaisHistoricosCulturais(string desc,int tVisita,int abertura,int encerramento) : Locais(desc)//desc=descrição - variavel da superclasse Locais
+LocaisHistoricosCulturais::LocaisHistoricosCulturais(string d,int tVisita,int abertura,int encerramento) : Locais(d)//desc=descrição - variavel da superclasse Locais
 {
 	tempoVisita = tVisita;
 	horarioAbertura = abertura;
@@ -19,7 +16,7 @@ LocaisHistoricosCulturais::LocaisHistoricosCulturais(string desc,int tVisita,int
 }
 
 
-LocaisHistoricosCulturais::LocaisHistoricosCulturais(const LocaisHistoricosCulturais &locHist)
+LocaisHistoricosCulturais::LocaisHistoricosCulturais(const LocaisHistoricosCulturais &locHist) : Locais(locHist)
 {
 	setTempoVisita(locHist.tempoVisita);
 	setHorarioAbertura(locHist.horarioAbertura);
@@ -28,7 +25,7 @@ LocaisHistoricosCulturais::LocaisHistoricosCulturais(const LocaisHistoricosCultu
 
 LocaisHistoricosCulturais::~LocaisHistoricosCulturais(){}
 
-Locais * LocaisHistoricosCulturais::clone() const{
+LocaisHistoricosCulturais * LocaisHistoricosCulturais::clone() const{
 	return new LocaisHistoricosCulturais(*this);
 }
 
@@ -38,7 +35,7 @@ void LocaisHistoricosCulturais::setTempoVisita(int tVisita)
 {
 	tempoVisita = tVisita;
 }
-						
+				
 
 void LocaisHistoricosCulturais::setHorarioAbertura(int abertura)
 {
@@ -66,10 +63,11 @@ int LocaisHistoricosCulturais::getHorarioEncerramento()const
 	return horarioEncerramento;
 }
 
-void LocaisHistoricosCulturais::escreve(ostream & out) const
+void LocaisHistoricosCulturais::escrever(ostream & out) const
 {  
-	Locais::escreve(cout);
-	cout << "Tempo Visita: " << tempoVisita << endl;
-	cout << "Horario Abertura: " << horarioAbertura << endl;
-	cout << "Horario Encerramento: " << horarioEncerramento << endl << endl;
+	cout << "TIPO LOCAL: " << "Historico Cultural" << endl;
+	Locais::escrever(cout);
+	cout << "TEMPO DE VISITA: " << tempoVisita << endl;
+	cout << "HORARIO DE ABERTURA: " << horarioAbertura << endl;
+	cout << "HORARIO DE ENCERRAMENTO: " << horarioEncerramento << endl << endl;
 }

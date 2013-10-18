@@ -13,7 +13,7 @@ class EstradasNacionais : public ViasLigacao
 	public:
 		EstradasNacionais();
 		EstradasNacionais(const EstradasNacionais &en);
-		EstradasNacionais(string cod,double totalVia,double tMedio,string tipoPav);
+		EstradasNacionais(string cod,double totalVia,double tempMedio,string orig,string dest,string tipoPav);
 		~EstradasNacionais();
 		virtual ViasLigacao * clone() const;
 
@@ -26,7 +26,7 @@ class EstradasNacionais : public ViasLigacao
 		bool operator >(const EstradasNacionais &en);
 		bool operator <(const EstradasNacionais &en);
 		bool operator ==(const EstradasNacionais &en);
-		void escreve(ostream &out);
+		void escrever(ostream &out)const;
 		
 
 };

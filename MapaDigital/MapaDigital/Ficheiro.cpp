@@ -176,7 +176,6 @@ void Ficheiro::lerFicheiroVias()
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
 					origem = aux1;
-					cout << "origem: " << origem << endl;
 					pos++;
 	
 			
@@ -186,7 +185,6 @@ void Ficheiro::lerFicheiroVias()
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
 					destino = aux;
-					cout << "destino: " << destino << endl;
 					pos++;
 
 
@@ -196,7 +194,6 @@ void Ficheiro::lerFicheiroVias()
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
 					codigo = aux;
-					cout << "codigo: " << codigo << endl;
 					pos++;
 
 					//total de quilometros da via
@@ -205,7 +202,6 @@ void Ficheiro::lerFicheiroVias()
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
 					totalKilom = atoi(aux);
-					cout << "totalkilometros: " << totalKilom << endl;
 					pos++;
 
 					//tempo medio do percurso
@@ -214,7 +210,6 @@ void Ficheiro::lerFicheiroVias()
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
 					tempMedio = atoi(aux);
-					cout << "tempo medio: " << tempMedio << endl;
 					pos++;
 
 					//tipo de pavimento OU preço da portagem
@@ -223,7 +218,7 @@ void Ficheiro::lerFicheiroVias()
 					pos=linha.find(',', inic);
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
-					cout << "pavimento/portagem: " << aux << endl << endl;
+					
 
 					if(codigo[0] == 'E')
 					{
@@ -340,3 +335,4 @@ void Ficheiro::escreverVias(ostream & out) const
 	
 	}
 }
+

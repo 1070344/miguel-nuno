@@ -5,16 +5,18 @@ Locais::Locais()
 	desc = "vazio";
 }
 
-Locais::Locais(const Locais &loc)
-{
-	setDescricao(loc.desc);
-}
-
 
 Locais::Locais(string d)
 {
 	desc = d;
 }
+
+
+Locais::Locais(const Locais &loc)
+{
+	setDescricao(loc.desc);
+}
+
 
 Locais::~Locais()
 {

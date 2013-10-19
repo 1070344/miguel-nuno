@@ -1,6 +1,12 @@
 #ifndef AutoEstradas_
 #define AutoEstradas_
 
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+#include <string.h>
+
 #include "ViasLigacao.h"
 
 class AutoEstradas : public ViasLigacao
@@ -12,7 +18,7 @@ class AutoEstradas : public ViasLigacao
 		AutoEstradas(const AutoEstradas &ae);
 		AutoEstradas(string orig,string dest,string cod,int totalVia,int tempMedio,double preco);
 		~AutoEstradas();
-		virtual ViasLigacao * clone() const;
+		AutoEstradas * clone() const;
 
 		//SET's e GET's
 		void setPrecoPortagem(double preco);

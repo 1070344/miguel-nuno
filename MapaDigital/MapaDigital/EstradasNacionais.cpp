@@ -15,7 +15,7 @@ EstradasNacionais::EstradasNacionais(string orig,string dest,string cod,int tota
 EstradasNacionais::~EstradasNacionais(){}
 
 
-ViasLigacao * EstradasNacionais::clone() const{
+EstradasNacionais * EstradasNacionais::clone() const{
 	return new EstradasNacionais(*this);
 }
 

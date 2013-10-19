@@ -1,13 +1,11 @@
 #ifndef EstradasNacionais_
 #define EstradasNacionais_
 
-
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
 #include <string.h>
-
 
 #include "ViasLigacao.h"
 
@@ -20,7 +18,7 @@ class EstradasNacionais : public ViasLigacao
 		EstradasNacionais(const EstradasNacionais &en);
 		EstradasNacionais(string orig,string dest,string cod,int totalVia,int tempMedio,string tipoPav);
 		~EstradasNacionais();
-		virtual ViasLigacao * clone() const;
+		EstradasNacionais * clone() const;
 
 		//SET's e GET's
 		void setTipoPavimento(string tipoPav);

@@ -1,7 +1,8 @@
 #include "ViasLigacao.h"
 
 
-ViasLigacao::ViasLigacao(){
+ViasLigacao::ViasLigacao()
+{
 		origem = "vazio";
 		destino = "vazio";
 		codigo = "vazio";

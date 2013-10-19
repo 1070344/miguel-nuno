@@ -15,7 +15,7 @@ AutoEstradas::AutoEstradas(string orig,string dest,string cod,int totalVia,int t
 AutoEstradas::~AutoEstradas(){}
 
 
-ViasLigacao * AutoEstradas::clone() const{
+AutoEstradas * AutoEstradas::clone() const{
 	return new AutoEstradas(*this);
 }
 

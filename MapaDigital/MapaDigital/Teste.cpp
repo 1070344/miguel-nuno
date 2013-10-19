@@ -18,14 +18,14 @@
 
 int main()
 {
-	
-	cout << "---------------M A P A   D I G I T A L--------------" << endl;
-	cout << "-----------------------------------------------------" << endl;
+	cout << "_____________________________________________________" << endl;
+	cout << "...............M A P A   D I G I T A L..............." << endl;
+	cout << "_____________________________________________________" << endl;
 
 
 	char sel;
-	Ficheiro f1(10);
-	Ficheiro f2(10);
+	Ficheiro f1(100);
+	Ficheiro f2(100);
 	
 	f1.lerFicheiroLocais();
 	f2.lerFicheiroVias();

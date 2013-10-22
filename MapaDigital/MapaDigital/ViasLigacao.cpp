@@ -1,29 +1,26 @@
 #include "ViasLigacao.h"
+#include "EstradasNacionais.h"
+#include "AutoEstradas.h"
+#include "Locais.h"
 
 
 ViasLigacao::ViasLigacao()
 {
-		origem = "vazio";
-		destino = "vazio";
 		codigo = "vazio";
 		totalKilometrosVia = 0;
 		tempMedioPercurso = 0;
 }
 
-ViasLigacao::ViasLigacao(string orig,string dest,string cod,int totalVia,int tempMedio)
+ViasLigacao::ViasLigacao(string orig,string dest,string cod,int totalVia,int tempMedio) : Locais(orig,dest)
 {
-	origem = orig;
-	destino = dest;
 	codigo = cod;
 	totalKilometrosVia = totalVia;
 	tempMedioPercurso = tempMedio;
 }
 
 
-ViasLigacao::ViasLigacao(const ViasLigacao &vias)
+ViasLigacao::ViasLigacao(const ViasLigacao &vias) : Locais(vias)
 {
-	setOrigem(vias.origem);
-	setDestino(vias.destino);
 	setCodigoVia(vias.codigo);
 	setTotalKilometrosVia(vias.totalKilometrosVia);
 	setTempoMedioPercurso(vias.tempMedioPercurso);
@@ -43,17 +40,6 @@ ViasLigacao * ViasLigacao::clone() const
 
 
 
-void ViasLigacao::setOrigem(string orig)
-{
-	origem = orig;
-}
-
-
-void ViasLigacao::setDestino(string dest)
-{
-	destino = dest;
-}
-
 
 void ViasLigacao::setCodigoVia(string cod)
 {
@@ -72,17 +58,6 @@ void ViasLigacao::setTempoMedioPercurso(int tempMedio)
 }
 
 
-
-string ViasLigacao::getOrigem() const
-{
-	return origem;
-}
-
-
-string ViasLigacao::getDestino() const
-{
-	return destino;
-}
 
 
 string ViasLigacao::getCodigoVia() const
@@ -104,8 +79,7 @@ int ViasLigacao::getTempoMedioPercurso() const
 
 
 
-
-/*ViasLigacao & ViasLigacao::operator=(const ViasLigacao &vias)
+ViasLigacao & ViasLigacao::operator=(const ViasLigacao &vias)
 {
 	if(this != &vias){
 		codigo = vias.getCodigoVia();
@@ -128,14 +102,13 @@ bool ViasLigacao::operator > (const ViasLigacao & vias)
 bool ViasLigacao::operator == (const ViasLigacao & vias)
 {
 	if (codigo == vias.codigo) return true; else return false;
-}*/
+}
 
 
 
 void ViasLigacao::escrever(ostream & out) const
 {  
-	cout << "ORIGEM: " << origem << endl;
-	cout << "DESTINO: " << destino << endl;
+	Locais::escrever2(cout);
 	cout << "CODIGO DA VIA: " << codigo << endl;
 	cout << "TOTAL DE QUILOMETROS: " << totalKilometrosVia << endl;
 	cout << "TEMPO MEDIO: " << tempMedioPercurso << endl;

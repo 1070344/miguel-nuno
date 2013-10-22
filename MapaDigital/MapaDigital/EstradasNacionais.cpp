@@ -21,7 +21,7 @@ EstradasNacionais * EstradasNacionais::clone() const{
 
 
 
-EstradasNacionais::EstradasNacionais(const EstradasNacionais &en)
+EstradasNacionais::EstradasNacionais(const EstradasNacionais &en) : ViasLigacao(en)
 {
 	setTipoPavimento(en.tipoPavimento);
 }

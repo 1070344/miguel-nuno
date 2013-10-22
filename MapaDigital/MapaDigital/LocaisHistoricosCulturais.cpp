@@ -8,7 +8,7 @@ LocaisHistoricosCulturais::LocaisHistoricosCulturais():Locais()
 	horarioEncerramento = 0;
 }
 
-LocaisHistoricosCulturais::LocaisHistoricosCulturais(string d,int tVisita,int abertura,int encerramento) : Locais(d)//desc=descrição - variavel da superclasse Locais
+LocaisHistoricosCulturais::LocaisHistoricosCulturais(string desc,int tVisita,int abertura,int encerramento) : Locais(desc)//desc=descrição - variavel da superclasse Locais
 {
 	tempoVisita = tVisita;
 	horarioAbertura = abertura;

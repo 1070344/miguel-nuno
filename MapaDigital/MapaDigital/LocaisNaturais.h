@@ -17,7 +17,7 @@ class LocaisNaturais : public Locais
 	public:
 		LocaisNaturais();
 		LocaisNaturais(const LocaisNaturais &locNat);
-		LocaisNaturais(string d,int a);
+		LocaisNaturais(string desc,int a);
 		~LocaisNaturais();
 		LocaisNaturais * clone() const;
 

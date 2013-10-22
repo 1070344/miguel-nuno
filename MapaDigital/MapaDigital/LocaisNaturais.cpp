@@ -7,7 +7,7 @@ LocaisNaturais::LocaisNaturais()
 }
 
 
-LocaisNaturais::LocaisNaturais(string d,int a) : Locais(d)//desc=descrição - variavel da superclasse Locais
+LocaisNaturais::LocaisNaturais(string desc,int a) : Locais(desc)
 {
 	area = a;
 }

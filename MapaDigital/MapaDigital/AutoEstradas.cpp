@@ -20,7 +20,7 @@ AutoEstradas * AutoEstradas::clone() const{
 }
 
 
-AutoEstradas::AutoEstradas(const AutoEstradas &ae)
+AutoEstradas::AutoEstradas(const AutoEstradas &ae) : ViasLigacao(ae)
 {
 	setPrecoPortagem(ae.precoPortagem);
 }

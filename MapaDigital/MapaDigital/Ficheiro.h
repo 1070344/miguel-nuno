@@ -20,8 +20,8 @@ using namespace std;
 class Ficheiro
 {
 	private:
-		int actual;
-		int tamanho;
+		int actual1,actual2;
+		int tamanho1,tamanho2;
 		Locais **vecLocais;
 		ViasLigacao **vecVias;
 	public:

@@ -19,7 +19,7 @@ class LocaisHistoricosCulturais : public Locais
 	public:
 		LocaisHistoricosCulturais();
 		LocaisHistoricosCulturais(const LocaisHistoricosCulturais &locHist);
-		LocaisHistoricosCulturais(string d,int tempoVisita,int horarioAbertura,int horarioEncerramento);
+		LocaisHistoricosCulturais(string desc,int tempoVisita,int horarioAbertura,int horarioEncerramento);
 		~LocaisHistoricosCulturais();
 		LocaisHistoricosCulturais * clone() const;
 

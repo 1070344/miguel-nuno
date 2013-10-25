@@ -32,6 +32,7 @@ class LocaisHistoricosCulturais : public Locais
 		int getHorarioAbertura()const;
 		int getHorarioEncerramento()const;
 
+		void mostrarHora(int t,string tipo) const;
 		void escrever(ostream & out) const;	
 };
 
@@ -98,13 +99,44 @@ int LocaisHistoricosCulturais::getHorarioEncerramento()const
 	return horarioEncerramento;
 }
 
+
+void LocaisHistoricosCulturais::mostrarHora(int t,string tipo)const
+{
+	int horas = t / 60;
+	int minutos = t % 60;
+
+	if(tipo == "abertura")
+	{
+		if(minutos == 0)
+		{
+			cout << "HORARIO DE ABERTURA: " << horas << ":" << minutos << "0h" << endl;
+		}
+		else
+		{
+			cout << "HORARIO DE ABERTURA: " << horas << ":" << minutos << "h" << endl;
+		}
+	}
+	else
+	{
+		if(minutos == 0)
+		{
+			cout << "HORARIO DE ENCERRAMENTO: " << horas << ":" << minutos << "0h" << endl << endl;
+		}
+		else
+		{
+			cout << "HORARIO DE ENCERRAMENTO: " << horas << ":" << minutos << "h" << endl << endl;
+		}
+	}
+}
+
+
 void LocaisHistoricosCulturais::escrever(ostream & out) const
 {  
 	cout << "TIPO DE LOCAL: " << "Historico Cultural" << endl;
 	Locais::escrever(cout);
 	cout << "TEMPO MEDIO DE VISITA: " << tempoVisita << " minutos" << endl;
-	Locais::mostrarHora(horarioAbertura,"abertura");
-	Locais::mostrarHora(horarioEncerramento,"encerramento");
+	LocaisHistoricosCulturais::mostrarHora(horarioAbertura,"abertura");
+	LocaisHistoricosCulturais::mostrarHora(horarioEncerramento,"encerramento");
 }
 
 

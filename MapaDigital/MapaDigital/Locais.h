@@ -34,7 +34,7 @@ class Locais
 		bool operator >(const Locais &loc);
 		bool operator <(const Locais &loc);
 		bool operator ==(const Locais &loc);*/
-		virtual void mostrarHora(int t,string tipo) const;
+		
 		virtual void escrever (ostream & out) const;
 		virtual void escrever2 (ostream & out) const;
 };
@@ -108,21 +108,7 @@ void Locais::escrever2(ostream & out) const
 	cout << "DESTINO: " << desc2 << endl;
 }
 
-void Locais::mostrarHora(int t,string tipo)const
-{
-	if(tipo == "abertura")
-	{
-		int horas = t / 60;
-		int minutos = t % 60;
-		cout << "HORARIO DE ABERTURA: " << horas << ":" << minutos << "h" << endl;
-	}
-	else
-	{
-		int horas = t / 60;
-		int minutos = t % 60;
-		cout << "HORARIO DE ENCERRAMENTO: " << horas << ":" << minutos << "h" << endl << endl;
-	}
-}
+
 
 
 

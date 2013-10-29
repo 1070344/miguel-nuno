@@ -1,6 +1,6 @@
-Serralves,Serralves,EN1,100,90,asfalto 
-Serralves,Serralves,EN2,55,35,paralelo 
-Serralves,Serralves,EN1,200,150,terra batida
-Serralves,Serralves,A3,54,30,3.25 
-Serralves,Serralves,A1,120,60,13.25 
-Serralves,Serralves,A4,80,90,7.05
+Caves Vinho do Porto,Serralves,EN1,100,90,asfalto 
+Estadio do Dragao,Avenida dos Aliados,EN2,55,35,paralelo 
+Serra do Pilar,Igreja da Se,EN1,200,150,terra batida
+Casa da Musica,Castelo do Queijo,A3,54,30,3.25 
+Museu da Cera,Casa da Musica,A1,120,60,13.25 
+ISEP,FEUP,A4,80,90,7.05

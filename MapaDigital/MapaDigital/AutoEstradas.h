@@ -7,6 +7,8 @@
 #include <string>
 #include <string.h>
 
+
+
 #include "ViasLigacao.h"
 
 class AutoEstradas : public ViasLigacao
@@ -26,10 +28,6 @@ class AutoEstradas : public ViasLigacao
 	
 		
 		//Sobrecarga de operadores
-		AutoEstradas & operator =(const AutoEstradas &ae);
-		bool operator >(const AutoEstradas &ae);
-		bool operator <(const AutoEstradas &ae);
-		bool operator ==(const AutoEstradas &ae);
 		void escrever(ostream &out) const;
 		
 
@@ -73,7 +71,7 @@ void AutoEstradas::escrever(ostream &out)const
 {
 	cout << "TIPO DE VIA: " << "Auto Estrada" << endl;
 	ViasLigacao::escrever(cout);
-	cout << "PRECO DA PORTAGEM: " << "EUR "<< precoPortagem << endl << endl;
+	cout << "PRECO DA PORTAGEM: " << "$" << precoPortagem << endl << endl;
 }
 
 

@@ -39,7 +39,7 @@ class ViasLigacao : public Locais
 		ViasLigacao & operator =(const ViasLigacao &vias);
 		bool operator >(const ViasLigacao &vias);
 		bool operator <(const ViasLigacao &vias);
-		bool operator ==(const ViasLigacao &vias);
+		bool operator == (const ViasLigacao &vias) const;
 };
 
 ViasLigacao::ViasLigacao()
@@ -137,9 +137,12 @@ bool ViasLigacao::operator > (const ViasLigacao & vias)
 	if (codigo > vias.codigo) return true; else return false;
 }
 
-bool ViasLigacao::operator == (const ViasLigacao & vias)
+bool ViasLigacao::operator == (const ViasLigacao & vias) const
 {
-	if (codigo == vias.codigo) return true; else return false;
+	if (codigo == vias.codigo && totalKilometrosVia == vias.totalKilometrosVia && tempMedioPercurso == vias.tempMedioPercurso)
+		return true;
+	else
+		return false;
 }
 
 

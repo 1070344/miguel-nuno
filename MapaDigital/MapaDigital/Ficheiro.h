@@ -6,8 +6,9 @@
 #include <stdio.h>
 #include <string>
 #include <string.h>
+#include <fstream>
 
-
+using namespace std;
 
 #include "Ficheiro.h"
 #include "Locais.h"
@@ -17,7 +18,6 @@
 #include "AutoEstradas.h"
 #include "EstradasNacionais.h"
 
-using namespace std;
 
 class Ficheiro
 {
@@ -36,11 +36,12 @@ class Ficheiro
 		void inserirLocais(Locais *loc);
 		void contarTiposLocal();
 		void ordenar();
+		void inserirNovoLocal();
 
 		void lerFicheiroVias();
 		void inserirVias(ViasLigacao *vias);
-		bool verificarOrigem(string origem);
-		bool verificarDestino(string destino);
+		bool validarOrigem(string origem);
+		bool validarDestino(string destino);
 
 		void escreverLocais(ostream& ostr) const;
 		void escreverVias(ostream& ostr) const;
@@ -88,11 +89,11 @@ void Ficheiro::lerFicheiroLocais()
 	string linha;
 	char *aux;
 	string aux1;
-	string v1;
-	int v2,v3,v4;
+	string desc;
+	int v2,abertura,encerramento;
 
-	while (!file.eof())
-	{
+		while (!file.eof())
+		{
 				getline(file, linha, '\n');
 	
 				if(linha.size() > 0)
@@ -103,7 +104,7 @@ void Ficheiro::lerFicheiroLocais()
 					int pos=linha.find(',',inic);	
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
-					v1=aux1;
+					desc=aux1;
 					pos++;
 	
 			
@@ -122,7 +123,7 @@ void Ficheiro::lerFicheiroLocais()
 					pos=linha.find(',', inic);
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
-					v3=atoi(aux);
+					abertura=atoi(aux);
 					pos++;
 
 					//hora de encerramento
@@ -130,15 +131,16 @@ void Ficheiro::lerFicheiroLocais()
 					pos=linha.find(',', inic);
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
-					v4=atoi(aux);
-					if (v3 == 0 ) 
+					encerramento=atoi(aux);
+
+					if (abertura == 0 ) 
 					{
-						LocaisNaturais locNat(v1,v2);
+						LocaisNaturais locNat(desc,v2);
 						inserirLocais(&locNat);
 					}
 					else
 					{
-						LocaisHistoricosCulturais locHist(v1,v2,v3,v4);
+						LocaisHistoricosCulturais locHist(desc,v2,abertura,encerramento);
 						inserirLocais(&locHist);
 					}
 
@@ -182,7 +184,7 @@ void Ficheiro::lerFicheiroVias()
 	double portagem;
 
 	/*		ORIGEM	DESTINO		CODIGO DA VIA		TOTALQUILOMETROS		TEMPOMEDIO		PAVIMENTO / PRECO PORTAGEM     */
-	/*		string	string		string				int						int				string	  / int					*/
+	/*		string	string		string				int						int				string	  / double					*/
 	while (!file.eof())
 	{
 				getline(file, linha, '\n');
@@ -197,7 +199,7 @@ void Ficheiro::lerFicheiroVias()
 					aux = &aux1[0];
 					origem = aux1;
 					pos++;
-	
+					
 			
 					//local de destino
 					inic = pos;
@@ -206,7 +208,7 @@ void Ficheiro::lerFicheiroVias()
 					aux = &aux1[0];
 					destino = aux;
 					pos++;
-
+					
 
 					//código da via
 					inic = pos;
@@ -233,13 +235,14 @@ void Ficheiro::lerFicheiroVias()
 					pos++;
 
 					//tipo de pavimento OU preço da portagem
-
 					inic = pos;
 					pos=linha.find(',', inic);
 					aux1 = linha.substr(inic,pos-inic);
 					aux = &aux1[0];
-					
-					if(verificarOrigem(origem)==true && verificarDestino(destino)==true)
+					bool a = validarOrigem(origem);
+					bool b = validarDestino(destino);
+
+					if(validarOrigem(origem)==true && validarDestino(destino)==true)
 					{
 						if(codigo[0] == 'E')
 						{
@@ -261,22 +264,21 @@ void Ficheiro::lerFicheiroVias()
 
 
 
-
-
-bool Ficheiro::verificarOrigem(string origem)
+bool Ficheiro::validarOrigem(string origem)
 {
 	for(int i=0 ; i<actual1 ; i++)
 		if(origem == vecLocais[i]->getDescricao1())
 			return true;
-	
 }
 
-bool Ficheiro::verificarDestino(string destino)
+bool Ficheiro::validarDestino(string destino)
 {
 	for(int i=0 ; i<actual1 ; i++)
 		if(destino == vecLocais[i]->getDescricao1())
 			return true;
 }
+
+
 
 void Ficheiro::inserirVias(ViasLigacao *vias)
 {
@@ -317,22 +319,22 @@ void Ficheiro::ordenar()
 
 void Ficheiro::contarTiposLocal()
 {			
-	int chc = 0;
-	int clog = 0;
+	int totalNaturais = 0;
+	int totalCulturais= 0;
 	for (int i=0; i<actual1; i++)
 	{
 		if (typeid(*vecLocais[i]) == typeid(LocaisHistoricosCulturais))
 		{
-			chc++;		
+			totalCulturais++;		
 		}
 		
 		if (typeid(*vecLocais[i]) == typeid(LocaisNaturais)) 
 		{
-			clog++;
+			totalNaturais++;
 		}
 		
 	}
-	cout << "TOTAL DE LOCAIS HISTORICO CULTURAIS: " << chc << endl;
+	cout << "TOTAL DE LOCAIS HISTORICO CULTURAIS: " << totalCulturais << endl;
 	for (int j=0; j<actual1; j++)
 	{
 		if (typeid(*vecLocais[j]) == typeid(LocaisHistoricosCulturais))
@@ -341,7 +343,9 @@ void Ficheiro::contarTiposLocal()
 		}
 	}
 
-	cout << "\nTOTAL DE LOCAIS NATURAIS: " << clog << endl;
+	cout << endl;
+
+	cout << "TOTAL DE LOCAIS NATURAIS: " << totalNaturais << endl;
 	for (int k=0; k<actual1; k++)
 	{
 		if (typeid(*vecLocais[k]) == typeid(LocaisNaturais))
@@ -349,8 +353,9 @@ void Ficheiro::contarTiposLocal()
 			cout << "->" << dynamic_cast <LocaisNaturais *>(vecLocais[k])->getDescricao1() << endl;
 		}
 	}
-	cout << "\n";
+	cout << endl;
 }
+
 
 
 void Ficheiro::escreverLocais(ostream & out) const

@@ -25,11 +25,6 @@ class LocaisNaturais : public Locais
 		void setArea(int a);
 		double getArea() const;
 
-		//Sobrecarga de operadores
-		LocaisNaturais & operator =(const LocaisNaturais &locNat);
-		bool operator >(const LocaisNaturais &locNat);
-		bool operator <(const LocaisNaturais &locNat);
-		bool operator ==(const LocaisNaturais &locNat);
 		void escrever(ostream &out) const;
 
 

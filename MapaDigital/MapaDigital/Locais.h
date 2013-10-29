@@ -29,14 +29,9 @@ class Locais
 		string getDescricao1()const;
 		string getDescricao2()const;
 
-		/*Sobrecarga de operadores
-		Locais & operator =(const Locais &loc);
-		bool operator >(const Locais &loc);
-		bool operator <(const Locais &loc);
-		bool operator ==(const Locais &loc);*/
-		
-		virtual void escrever (ostream & out) const;
-		virtual void escrever2 (ostream & out) const;
+		virtual void escrever(ostream & out) const;
+		virtual void escrever2(ostream & out) const;
+
 };
 
 
@@ -97,6 +92,7 @@ string Locais::getDescricao2()const
 	return desc2;
 }
 
+
 void Locais::escrever(ostream & out) const
 {  
 	cout << "DESCRICAO: " << desc1 << endl;
@@ -107,6 +103,8 @@ void Locais::escrever2(ostream & out) const
 	cout << "ORIGEM: " << desc1 << endl;
 	cout << "DESTINO: " << desc2 << endl;
 }
+
+
 
 
 

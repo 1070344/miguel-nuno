@@ -24,11 +24,6 @@ class EstradasNacionais : public ViasLigacao
 		void setTipoPavimento(string tipoPav);
 		string getTipoPavimento()const;
 	
-		//Sobrecarga de operadores
-		EstradasNacionais & operator =(const EstradasNacionais &en);
-		bool operator >(const EstradasNacionais &en);
-		bool operator <(const EstradasNacionais &en);
-		bool operator ==(const EstradasNacionais &en);
 		void escrever(ostream &out)const;
 		
 

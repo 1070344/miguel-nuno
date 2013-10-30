@@ -41,6 +41,18 @@
     <ClInclude Include="Ficheiro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="graphEdge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphVertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphStl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphStlPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Ficheiro1.txt">

@@ -82,6 +82,10 @@
     <ClInclude Include="AutoEstradas.h" />
     <ClInclude Include="EstradasNacionais.h" />
     <ClInclude Include="Ficheiro.h" />
+    <ClInclude Include="graphEdge.h" />
+    <ClInclude Include="graphStl.h" />
+    <ClInclude Include="graphStlPath.h" />
+    <ClInclude Include="graphVertex.h" />
     <ClInclude Include="Locais.h" />
     <ClInclude Include="LocaisHistoricosCulturais.h" />
     <ClInclude Include="LocaisNaturais.h" />

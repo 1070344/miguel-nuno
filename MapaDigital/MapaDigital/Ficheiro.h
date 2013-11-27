@@ -7,6 +7,7 @@
 #include <string>
 #include <string.h>
 #include <fstream>
+#include <list>
 
 using namespace std;
 
@@ -22,65 +23,43 @@ using namespace std;
 class Ficheiro
 {
 	private:
-		int actual1,actual2;
-		int tamanho1,tamanho2;
-		Locais **vecLocais;
-		ViasLigacao **vecVias;
+		list<Locais *>listaLocais;
+		list<ViasLigacao *>listaVias;
 	public:
 		Ficheiro();
-		Ficheiro(int t);
 		Ficheiro(const Ficheiro &f);
 		~Ficheiro();
 
-		void lerFicheiroLocais();
-		void inserirLocais(Locais *loc);
+		void lerFicheiroLocais(string fx);
+		//void inserirLocais(Locais *loc);
 		void contarTiposLocal();
-		void ordenar();
+		//void ordenar();
 		void inserirNovoLocal();
 
-		void lerFicheiroVias();
-		void inserirVias(ViasLigacao *vias);
+		void lerFicheiroVias(string fx);
+		//void inserirVias(ViasLigacao *vias);
 		bool validarOrigem(string origem);
 		bool validarDestino(string destino);
-
-		void escreverLocais(ostream& ostr) const;
-		void escreverVias(ostream& ostr) const;
+		
+		void listarLocais();
+		void listarVias();
 };
 
 
-Ficheiro::Ficheiro(int t)
+Ficheiro::Ficheiro()
 {
-	actual1 = 0;
-	actual2 = 0;
-	tamanho1 = t;
-	tamanho2 = t;
-	vecLocais = new Locais * [tamanho1];
-	vecVias = new ViasLigacao * [tamanho2]; 
-}
 
-Ficheiro::Ficheiro(const Ficheiro &f)
-{
-	vecLocais = f.vecLocais;
-	vecVias = f.vecVias; 
-	tamanho1 = f.tamanho1;
-	tamanho2 = f.tamanho2;
 }
 
 Ficheiro::~Ficheiro()
 {
-	for (int i=0; i<actual1; i++)
-		delete vecLocais[i];
-	delete [] vecLocais;
 	
-	for (int j=0; j<actual2; j++)
-		delete vecVias[j];
-	delete [] vecVias;
 }
 
-void Ficheiro::lerFicheiroLocais()
+void Ficheiro::lerFicheiroLocais(string fx)
 {
 	ifstream file;
-	file.open("Ficheiro1.txt");
+	file.open(fx);
 	if (!file)
 	{
 		cerr << "Erro a abrir ficheiro dos locais!" << endl;
@@ -135,13 +114,11 @@ void Ficheiro::lerFicheiroLocais()
 
 					if (abertura == 0 ) 
 					{
-						LocaisNaturais locNat(desc,v2);
-						inserirLocais(&locNat);
+						listaLocais.push_front(new LocaisNaturais(desc,v2));
 					}
 					else
 					{
-						LocaisHistoricosCulturais locHist(desc,v2,abertura,encerramento);
-						inserirLocais(&locHist);
+						listaLocais.push_front(new LocaisHistoricosCulturais(desc,v2,abertura,encerramento));
 					}
 
 				}
@@ -149,7 +126,7 @@ void Ficheiro::lerFicheiroLocais()
 		file.close();
 }
 
-void Ficheiro::inserirLocais(Locais *loc)
+/*void Ficheiro::inserirLocais(Locais *loc)
 {
 	if (actual1 == tamanho1)
 	{
@@ -163,14 +140,14 @@ void Ficheiro::inserirLocais(Locais *loc)
 
 	vecLocais[actual1] = loc->clone();
 	actual1++;
-}
+}*/
 
 
-void Ficheiro::lerFicheiroVias()
+void Ficheiro::lerFicheiroVias(string fx)
 {
 	ifstream file;
 	
-	file.open("Ficheiro2.txt");
+	file.open(fx);
 	if (!file)
 	{
 		cerr << "Erro a abrir ficheiro das vias de ligacao!" << endl;
@@ -247,14 +224,12 @@ void Ficheiro::lerFicheiroVias()
 						if(codigo[0] == 'E')
 						{
 							pavimento = aux;
-							EstradasNacionais en(origem,destino,codigo,totalKilom,tempMedio,pavimento);
-							inserirVias(&en);
+							listaVias.push_front(new EstradasNacionais(origem,destino,codigo,totalKilom,tempMedio,pavimento));
 						}
 						else
 						{
 							portagem = atof(aux);
-							AutoEstradas ae(origem,destino,codigo,totalKilom,tempMedio,portagem);
-							inserirVias(&ae);
+							listaVias.push_front(new AutoEstradas(origem,destino,codigo,totalKilom,tempMedio,portagem));
 						}
 					}
 				}
@@ -266,21 +241,21 @@ void Ficheiro::lerFicheiroVias()
 
 bool Ficheiro::validarOrigem(string origem)
 {
-	for(int i=0 ; i<actual1 ; i++)
-		if(origem == vecLocais[i]->getDescricao1())
+	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
+		if(origem == (*it)->getDescricao1())
 			return true;
 }
 
 bool Ficheiro::validarDestino(string destino)
 {
-	for(int i=0 ; i<actual1 ; i++)
-		if(destino == vecLocais[i]->getDescricao1())
+	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
+		if(destino == (*it)->getDescricao1())
 			return true;
 }
 
 
 
-void Ficheiro::inserirVias(ViasLigacao *vias)
+/*void Ficheiro::inserirVias(ViasLigacao *vias)
 {
 	if (actual2 == tamanho2)
 	{
@@ -295,87 +270,69 @@ void Ficheiro::inserirVias(ViasLigacao *vias)
 	vecVias[actual2] = vias->clone();
 	actual2++;
 }
+*/
 
 
-
-void Ficheiro::ordenar()
+/*void Ficheiro::ordenar()
 {
-	Locais *temp;
+	list<Locais *>temp;
 
 	for (int i=0; i<actual1; i++)
 	{
 		for(int j=i+1; j<actual1; j++)
 		{
-			if(vecLocais[i]->getDescricao1() > vecLocais[j]->getDescricao1())
+			if(listaLocais[i]->getDescricao1() > listaLocais[j]->getDescricao1())
 			{
-				temp = vecLocais[i];     
-				vecLocais[i] = vecLocais[j];
-				vecLocais[j] = temp;
+				temp = listaLocais[i];     
+				listaLocais[i] = listaLocais[j];
+				listaLocais[j] = temp;
 			}
 		}
 	}
-}
+}*/
  
 
 void Ficheiro::contarTiposLocal()
 {			
+
 	int totalNaturais = 0;
 	int totalCulturais= 0;
-	for (int i=0; i<actual1; i++)
+
+	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
 	{
-		if (typeid(*vecLocais[i]) == typeid(LocaisHistoricosCulturais))
-		{
-			totalCulturais++;		
-		}
-		
-		if (typeid(*vecLocais[i]) == typeid(LocaisNaturais)) 
+		if (typeid(**it) == (typeid(LocaisNaturais)))
 		{
 			totalNaturais++;
 		}
-		
+		else 
+			if (typeid(**it) == (typeid(LocaisHistoricosCulturais)))
+			{
+				totalCulturais++;
+			}
 	}
-	cout << "TOTAL DE LOCAIS HISTORICO CULTURAIS: " << totalCulturais << endl;
-	for (int j=0; j<actual1; j++)
-	{
-		if (typeid(*vecLocais[j]) == typeid(LocaisHistoricosCulturais))
-		{
-			cout << "->" << dynamic_cast <LocaisHistoricosCulturais *>(vecLocais[j])->getDescricao1() << endl;
-		}
-	}
+	cout << "TOTAL de LOCAIS NATURAIS: " << totalNaturais << endl;	
+	cout << "TOTAL ce LOCAIS HISTORICO CULTURAIS: " << totalCulturais << endl;	
 
-	cout << endl;
-
-	cout << "TOTAL DE LOCAIS NATURAIS: " << totalNaturais << endl;
-	for (int k=0; k<actual1; k++)
-	{
-		if (typeid(*vecLocais[k]) == typeid(LocaisNaturais))
-		{
-			cout << "->" << dynamic_cast <LocaisNaturais *>(vecLocais[k])->getDescricao1() << endl;
-		}
-	}
-	cout << endl;
 }
 
 
 
-void Ficheiro::escreverLocais(ostream & out) const
+void Ficheiro::listarLocais()
 {				
-	for (int i=0; i<actual1; i++)
+	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
 	{
-		if (typeid(*vecLocais[i]) == typeid(LocaisHistoricosCulturais)) dynamic_cast <LocaisHistoricosCulturais *>(vecLocais[i])->escrever(cout);
-		if (typeid(*vecLocais[i]) == typeid(LocaisNaturais)) dynamic_cast <LocaisNaturais *>(vecLocais[i])->escrever(cout);
-	
+		(*it)->escrever(cout);
 	}
+	cout << endl;		
 }
 
-
-void Ficheiro::escreverVias(ostream & out) const
+void Ficheiro::listarVias()
 {				
-	for (int i=0; i<actual2; i++)
+	for(list<ViasLigacao *>::iterator it = listaVias.begin(); it != listaVias.end(); it++)
 	{
-		if (typeid(*vecVias[i]) == typeid(AutoEstradas)) dynamic_cast <AutoEstradas *>(vecVias[i])->escrever(cout);
-		if (typeid(*vecVias[i]) == typeid(EstradasNacionais)) dynamic_cast <EstradasNacionais *>(vecVias[i])->escrever(cout);
+			(*it)->escrever(cout);
 	}
+	cout << endl;
 }
 
 

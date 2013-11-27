@@ -1,16 +1,3 @@
-//CLASSE ListAdjGrafo.h
-
-
-
-/***************************************
- * graphStl.h
- *
- * Created on 18 de Julho de 2013, 15:35
- * 
- * @author Nuno Malheiro
- * rev1: g++ compatibility 23/10/2013
- ***************************************/
-
 #ifndef _graphStl_
 #define _graphStl_
 
@@ -37,6 +24,7 @@ protected:
 	list < graphVertex <TV,TE> > vlist;  // Vertice list
 
 	TE getInfinite() const;
+	int getKeys() const;
 		// TODO: if TV is a pointer compareVertices will have to be re-written
 	virtual bool compareVertices(TV const &vContent1, TV const &vContent2);
 
@@ -75,6 +63,12 @@ template<class TV,class TE>
 TE graphStl<TV,TE>::getInfinite() const
 {
 	return infinite;
+}
+
+template<class TV,class TE>
+int graphStl<TV,TE>::getKeys() const
+{
+	return keys;
 }
 
 template<class TV,class TE>
@@ -202,17 +196,21 @@ bool graphStl<TV,TE>::addGraphVertex(const TV& vContent)
 template<class TV,class TE>
 bool graphStl<TV,TE>::addGraphEdge(const TE& eContent, const TV& vOrigin, const TV& vDestination)
 {
-	if (vOrigin==vDestination) return false;
+	addGraphVertex(vOrigin); 
+	addGraphVertex(vDestination);
 	
-	addGraphVertex(vOrigin); addGraphVertex(vDestination);
-
+	if (vOrigin == vDestination) 
+		return false;
+	
 	typename list < graphVertex <TV,TE> >::iterator itvOrigin, itvDestination;	
-	if (!(getVertexIteratorByContent(itvOrigin, vOrigin) && getVertexIteratorByContent(itvDestination, vDestination))) return false;	
+	if (!(getVertexIteratorByContent(itvOrigin, vOrigin) && getVertexIteratorByContent(itvDestination, vDestination)))
+		return false;	
 
 	itvOrigin->addAdjacency(eContent, itvDestination);
 
-	if (infinite+eContent>infinite) infinite += eContent;
-	return true;
+	if (infinite+eContent>infinite) 
+		infinite += eContent;
+		return true;
 }
 
 template<class TV,class TE>

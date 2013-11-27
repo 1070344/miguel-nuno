@@ -1,6 +1,3 @@
-//CLASSE RAMO
-
-
 /***************************************
  * graphVertex.h
  *
@@ -8,6 +5,7 @@
  * 
  * @author Nuno Malheiro
  * rev1: g++ compatibility 23/10/2013
+ * rev2: mac compatibility 28/10/2013
  ***************************************/
 
 #ifndef _graphEdge_

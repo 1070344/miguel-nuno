@@ -53,6 +53,12 @@
     <ClInclude Include="graphStlPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MapaDigital.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pvias.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Ficheiro1.txt">

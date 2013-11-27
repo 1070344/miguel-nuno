@@ -1,0 +1,2 @@
+criar MapaDigital.h - grafo da rede
+criar classe TVias.h - invocar o metodo addEdge

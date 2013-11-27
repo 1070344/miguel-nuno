@@ -89,6 +89,8 @@
     <ClInclude Include="Locais.h" />
     <ClInclude Include="LocaisHistoricosCulturais.h" />
     <ClInclude Include="LocaisNaturais.h" />
+    <ClInclude Include="MapaDigital.h" />
+    <ClInclude Include="Pvias.h" />
     <ClInclude Include="ViasLigacao.h" />
   </ItemGroup>
   <ItemGroup>

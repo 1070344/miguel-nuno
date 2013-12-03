@@ -43,6 +43,8 @@ class Ficheiro
 		
 		void listarLocais();
 		void listarVias();
+
+		void criarGrafo(MapaDigital &graf);
 };
 
 
@@ -55,6 +57,26 @@ Ficheiro::~Ficheiro()
 {
 	
 }
+
+
+void Ficheiro::criarGrafo(MapaDigital &graf){
+	list < ViasLigacao* > :: iterator it;
+	for(it = listaVias.begin(); it != listaVias.end(); it++)
+	{
+		if(typeid(AutoEstradas) == typeid(**it))
+		{
+			Pvias p(AutoEstradas((*it)->getCodigoVia,(*it)->getTotalKilometrosVia(),(*it)->getTempoMedioPercurso(),((AutoEstradas*)*it)->getPrecoPortagem(),(*it)->getOrigem(),(*it)->getDestino()));
+			graf.addGraphEdge(p,(*it)->getOrigem(),(*it)->getDestino());
+		}
+		if(typeid(EstradasNacionais) == typeid(**it))
+		{
+			Pvias p(EstradasNacionais((*it)->getCodigoVia(),(*it)->getTotalKilometrosVia(),(*it)->getTempoMedioPercurso(),((EstradasNacionais*)*it)->getTipoPavimento(),(*it)->getOrigem(),(*it)->getDestino()));
+			graf.addGraphEdge(p,(*it)->getOrigem(),(*it)->getDestino());
+		}
+	}
+}
+
+
 
 void Ficheiro::lerFicheiroLocais(string fx)
 {

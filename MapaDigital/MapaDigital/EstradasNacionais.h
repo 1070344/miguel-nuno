@@ -16,9 +16,9 @@ class EstradasNacionais : public ViasLigacao
 	public:
 		EstradasNacionais();
 		EstradasNacionais(const EstradasNacionais &en);
-		EstradasNacionais(string orig,string dest,string cod,int totalVia,int tempMedio,string tipoPav);
+		EstradasNacionais(Locais* origem, Locais* destino,string cod,int totalVia,int tempMedio,string tipoPav);
 		~EstradasNacionais();
-		EstradasNacionais * clone() const;
+		virtual ViasLigacao * clone() const;
 
 		//SET's e GET's
 		void setTipoPavimento(string tipoPav);
@@ -35,7 +35,7 @@ EstradasNacionais::EstradasNacionais()
 	tipoPavimento = "vazio";
 }
 
-EstradasNacionais::EstradasNacionais(string orig,string dest,string cod,int totalVia,int tempMedio,string tipoPav) : ViasLigacao(orig,dest,cod,totalVia,tempMedio)
+EstradasNacionais::EstradasNacionais(Locais* origem, Locais* destino,string cod,int totalVia,int tempMedio,string tipoPav) : ViasLigacao(origem,destino,cod,totalVia,tempMedio)
 {
 	tipoPavimento = tipoPav;
 }
@@ -43,11 +43,9 @@ EstradasNacionais::EstradasNacionais(string orig,string dest,string cod,int tota
 EstradasNacionais::~EstradasNacionais(){}
 
 
-EstradasNacionais * EstradasNacionais::clone() const{
+ViasLigacao * EstradasNacionais::clone() const{
 	return new EstradasNacionais(*this);
 }
-
-
 
 EstradasNacionais::EstradasNacionais(const EstradasNacionais &en) : ViasLigacao(en)
 {

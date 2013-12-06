@@ -65,7 +65,7 @@ Pvias::Pvias(){
 }
 
 Pvias::Pvias(int km, int tempo, double preco){
-	apvia = new AutoEstradas("",km,tempo,preco,NULL,NULL);
+	apvia = new AutoEstradas(NULL,NULL,"",km,tempo,preco);
 }
 
 Pvias::~Pvias(){
@@ -85,7 +85,7 @@ int Pvias::getKM() const {
 }
 
 double Pvias::getPreco() const {
-	return apvia->getPrecoPortagem();
+	return apvia->getPrecoPortagem();//ainda n pus
 }
 
 int Pvias::getTempo() const{

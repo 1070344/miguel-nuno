@@ -18,13 +18,13 @@ class AutoEstradas : public ViasLigacao
 	public:
 		AutoEstradas();
 		AutoEstradas(const AutoEstradas &ae);
-		AutoEstradas(string orig,string dest,string cod,int totalVia,int tempMedio,double preco);
+		AutoEstradas(Locais* origem, Locais* destino,string cod,int totalVia,int tempMedio,double preco);
 		~AutoEstradas();
-		AutoEstradas * clone() const;
+		virtual ViasLigacao * clone() const;
 
 		//SET's e GET's
-		void setPrecoPortagem(double preco);
-		double getPrecoPortagem() const;
+		virtual void setPrecoPortagem(double preco);
+		virtual double getPrecoPortagem() const;
 	
 		
 		//Sobrecarga de operadores
@@ -39,7 +39,7 @@ AutoEstradas::AutoEstradas()
 	precoPortagem = 0;
 }
 
-AutoEstradas::AutoEstradas(string orig,string dest,string cod,int totalVia,int tempMedio,double preco) : ViasLigacao(orig,dest,cod,totalVia,tempMedio)
+AutoEstradas::AutoEstradas(Locais* origem, Locais* destino,string cod,int totalVia,int tempMedio,double preco) : ViasLigacao(origem,destino,cod,totalVia,tempMedio)
 {
 	precoPortagem = preco;
 }
@@ -47,7 +47,7 @@ AutoEstradas::AutoEstradas(string orig,string dest,string cod,int totalVia,int t
 AutoEstradas::~AutoEstradas(){}
 
 
-AutoEstradas * AutoEstradas::clone() const{
+ViasLigacao * AutoEstradas::clone() const{
 	return new AutoEstradas(*this);
 }
 

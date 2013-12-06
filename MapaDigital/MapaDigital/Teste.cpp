@@ -13,6 +13,7 @@
 #include "AutoEstradas.h"
 #include "EstradasNacionais.h"
 #include "graphStlPath.h"
+#include "MapaDigital.h"
 
 
 
@@ -27,10 +28,12 @@ int main()
 
 	char sel;
 	Ficheiro f;
-	
+	MapaDigital map;
 	f.lerFicheiroLocais("Ficheiro1.txt");
 	f.lerFicheiroVias("Ficheiro2.txt");
-
+	f.criarGrafo(map);
+	string origem = "";
+	string dest = "";
 
 	cout << "Selecione uma opcao" << endl;
     cout << "1. Listagem dos locais" << endl;
@@ -39,8 +42,8 @@ int main()
 	cout << "4. Construir grafo" << endl;
 	cout << "5. Determinar complexidade temporaral(Big-Oh)" << endl;
 	cout << "6. Apresentar percurso entre dois locais" << endl;
-	cout << "7. Percurso mais curto em km" << endl;
-	cout << "8. Percurso mais economco em euros" << endl;
+	cout << "7. Percurso mais curto em km" << endl;//menorCaminhoCusto
+	cout << "8. Percurso mais economco em euros" << endl;//
 	cout << "9. Percurso de maior interesse turistico" << endl;
 	cout << "0. Sair do programa\n" << endl;
 	cout << "Opcao: ";
@@ -65,36 +68,49 @@ int main()
 			break;
 
 		case '4':
-			//MapaDigital m;
-			//m.criarGrafo();
-			main();
-			break;
-
-		case '5':
-			
-			
-			main();
-			break;
-
-		case '6':
-			
-			
-			main();
-			break;
-
-		case '7':
-			//char or;
-			//char dest;
-			//cout << "Insira origem: " << endl;
-			//cin >> or;
-			//cout << insira destino: " << endl;
-			//cin >> dest;
-			//MapaDigital m;
-			//m.caminhoMaisCurto(or,dest);
-			//m.escreve(out);
-			main();
-			break;
-
+		map.mostrarGrafo();
+		main();
+		break;
+	case '5':
+		cout << "Origem?" << endl;
+		cin >> origem;
+		cout << "Destino?" << endl;
+		cin >> dest;
+		map.caminhos(origem , dest);
+		main();
+		break;
+	case '6':
+		cout << "Origem?" << endl;
+		cin >> origem;
+		cout << "Destino?" << endl;
+		cin >> dest;
+		map.menorCaminhoDistancia(origem,dest);
+		main();
+		break;
+	case '7':
+		cout << "Origem?" << endl;
+		cin >> origem;
+		cout << "Destino?" << endl;
+		cin >> dest;
+		map.menorCaminhoCusto(origem,dest);
+		main();
+		break;
+	case '8':
+		cout << "Origem?" << endl;
+		cin >> origem;
+		cout << "Destino?" << endl;
+		cin >> dest;
+		map.maiorcaminho(origem,dest); 
+		main();
+		break;
+	case '9':
+		cout << "Origem?" << endl;
+		cin >> origem;
+		cout << "Destino?" << endl;
+		cin >> dest;
+		map.TerminarVisita(origem,dest); 
+		main();
+		break;
 		case '0':
 			system("exit");
 			break;

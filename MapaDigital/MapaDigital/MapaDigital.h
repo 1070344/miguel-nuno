@@ -104,7 +104,7 @@ void MapaDigital::maiorcaminho(const string &l1, const string &l2){
 	}
 	while (!aux.empty()) 
 	{ 
-		cout << aux.top()->getDescricao() << " <- "; 
+		cout << aux.top()->getDescricao1() << " <- "; 
 		aux.pop();
 	} 
 }

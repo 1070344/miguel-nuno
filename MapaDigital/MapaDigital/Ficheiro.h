@@ -18,6 +18,7 @@ using namespace std;
 #include "ViasLigacao.h"
 #include "AutoEstradas.h"
 #include "EstradasNacionais.h"
+#include "MapaDigital.h"
 
 
 class Ficheiro
@@ -241,17 +242,47 @@ void Ficheiro::lerFicheiroVias(string fx)
 					bool a = validarOrigem(origem);
 					bool b = validarDestino(destino);
 
+					Locais * local1;
+					Locais * local2;
+
 					if(validarOrigem(origem)==true && validarDestino(destino)==true)
 					{
 						if(codigo[0] == 'E')
 						{
+							list < Locais* > :: iterator it;
+							for(it=listaLocais.begin() ; it!=listaLocais.end(); it++)
+							{
+								if((*it)->getDescricao1 == origem)
+								{
+									local1 = *it;
+								}
+								if((*it)->getDescricao2() == destino)
+								{
+									local2 = *it;
+								}
+							}
+
 							pavimento = aux;
-							listaVias.push_front(new EstradasNacionais(origem,destino,codigo,totalKilom,tempMedio,pavimento));
+							listaVias.push_front(new EstradasNacionais(local1,local2,codigo,totalKilom,tempMedio,pavimento));
 						}
 						else
 						{
+							list < Locais* > :: iterator it;
+							for(it=listaLocais.begin() ; it!=listaLocais.end(); it++){
+								if((*it)->getDescricao1() == origem){
+
+									local1 = *it;
+
+								}
+								if((*it)->getDescricao2() == destino){
+
+									local2 = *it;
+
+								}
+							}
+
 							portagem = atof(aux);
-							listaVias.push_front(new AutoEstradas(origem,destino,codigo,totalKilom,tempMedio,portagem));
+							listaVias.push_front(new AutoEstradas(local1,local2,codigo,totalKilom,tempMedio,portagem));
 						}
 					}
 				}

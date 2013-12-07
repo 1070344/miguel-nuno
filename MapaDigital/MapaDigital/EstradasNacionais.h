@@ -2,12 +2,12 @@
 #define EstradasNacionais_
 
 #include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
 #include <string>
 #include <string.h>
 
+
 #include "ViasLigacao.h"
+
 
 class EstradasNacionais : public ViasLigacao
 {
@@ -26,6 +26,11 @@ class EstradasNacionais : public ViasLigacao
 	
 		void escrever(ostream &out)const;
 		
+		EstradasNacionais & operator = (const EstradasNacionais &en);
+		bool operator ==(const EstradasNacionais &en) const;
+
+		friend ostream & operator << (ostream & out, const EstradasNacionais * en);
+		friend ostream & operator << (ostream & out, const EstradasNacionais  & en);
 
 };
 
@@ -40,7 +45,10 @@ EstradasNacionais::EstradasNacionais(Locais* origem, Locais* destino,string cod,
 	tipoPavimento = tipoPav;
 }
 
-EstradasNacionais::~EstradasNacionais(){}
+EstradasNacionais::~EstradasNacionais()
+{
+
+}
 
 
 ViasLigacao * EstradasNacionais::clone() const{
@@ -67,6 +75,22 @@ void EstradasNacionais::escrever(ostream &out)const
 	cout << "TIPO DE VIA: " << "Estrada Nacional" << endl;
 	ViasLigacao::escrever(cout);
 	cout << "TIPO DE PAVIMENTO: " << tipoPavimento << endl << endl;
+}
+
+
+EstradasNacionais& EstradasNacionais::operator=(const EstradasNacionais &en) {
+	tipoPavimento = en.tipoPavimento;
+	return *this;
+}
+
+ostream & operator << (ostream & out, const EstradasNacionais * en){
+	en->escrever(out);
+	return out;
+}
+
+ostream & operator << (ostream & out, const EstradasNacionais & en){
+	en.escrever(out);
+	return out;
 }
 
 

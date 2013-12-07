@@ -19,7 +19,7 @@
 
 
 
-int main()
+int main(void)
 {
 	cout << "|========================================================================|" << endl;
 	cout << "|                         M A P A   D I G I T A L                        |" << endl;
@@ -42,7 +42,7 @@ int main()
 	cout << "4. Construir grafo" << endl;
 	cout << "5. Determinar complexidade temporaral(Big-Oh)" << endl;
 	cout << "6. Apresentar percurso entre dois locais" << endl;
-	cout << "7. Percurso mais curto em km" << endl;//menorCaminhoCusto
+	cout << "7. Percurso mais curto em km" << endl;
 	cout << "8. Percurso mais economco em euros" << endl;//
 	cout << "9. Percurso de maior interesse turistico" << endl;
 	cout << "0. Sair do programa\n" << endl;
@@ -100,7 +100,7 @@ int main()
 		cin >> origem;
 		cout << "Destino?" << endl;
 		cin >> dest;
-		map.maiorcaminho(origem,dest); 
+		map.maiorCaminho(origem,dest); 
 		main();
 		break;
 	case '9':
@@ -108,14 +108,13 @@ int main()
 		cin >> origem;
 		cout << "Destino?" << endl;
 		cin >> dest;
-		map.TerminarVisita(origem,dest); 
+		map.terminarVisita(origem,dest); 
 		main();
 		break;
 		case '0':
 			system("exit");
 			break;
  	}
-
 
 }
 

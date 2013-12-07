@@ -26,7 +26,15 @@ class LocaisNaturais : public Locais
 		double getArea() const;
 
 		void escrever(ostream &out) const;
+		
+		LocaisNaturais & operator = (const LocaisNaturais &locNat);
+		bool operator ==(const LocaisNaturais &locNat) const;
+		bool operator <(const LocaisNaturais &locNat) const;
 
+
+		friend ostream & operator << (ostream & out, const LocaisNaturais * locNat);
+		friend ostream & operator << (ostream & out, const LocaisNaturais  & locNat);
+	
 
 };
 
@@ -74,7 +82,28 @@ void LocaisNaturais::escrever(ostream & out) const
 	cout << "AREA: " << area << " km2 " << endl << endl;
 }
 
+LocaisNaturais& LocaisNaturais::operator=(const LocaisNaturais &locNat) {
+	area = locNat.area;
+	return *this;
+}
 
+bool LocaisNaturais::operator == (const LocaisNaturais& locNat)const{
+	return (area==locNat.area);
+}
+
+bool LocaisNaturais::operator < (const LocaisNaturais& locNat)const{
+	return (area < locNat.area);
+}
+
+ostream & operator << (ostream & out, const LocaisNaturais * locNat){
+	locNat->escrever(out);
+	return out;
+}
+
+ostream & operator << (ostream & out, const LocaisNaturais & locNat){
+	locNat.escrever(out);
+	return out;
+}
 
 
 

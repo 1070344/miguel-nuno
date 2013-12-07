@@ -34,6 +34,13 @@ class LocaisHistoricosCulturais : public Locais
 
 		void mostrarHora(int t,string tipo) const;
 		void escrever(ostream & out) const;	
+
+		virtual LocaisHistoricosCulturais& operator=(const LocaisHistoricosCulturais &hclocHist);
+		virtual bool operator==(const LocaisHistoricosCulturais &hlocHistc) const;
+
+		friend ostream & operator << (ostream & out, const LocaisHistoricosCulturais * locHist);
+		friend ostream & operator << (ostream & out, const LocaisHistoricosCulturais  & locHist);
+
 };
 
 
@@ -138,6 +145,35 @@ void LocaisHistoricosCulturais::escrever(ostream & out) const
 	LocaisHistoricosCulturais::mostrarHora(horarioAbertura,"abertura");
 	LocaisHistoricosCulturais::mostrarHora(horarioEncerramento,"encerramento");
 }
+
+
+LocaisHistoricosCulturais& LocaisHistoricosCulturais::operator=(const LocaisHistoricosCulturais &locHist){
+	
+	tempoVisita = locHist.tempoVisita;
+	horarioAbertura = locHist.horarioAbertura;
+	horarioEncerramento = locHist.horarioEncerramento;
+	
+	return *this;
+}
+
+bool LocaisHistoricosCulturais::operator==(const LocaisHistoricosCulturais &locHist) const{
+
+	return  (tempoVisita == locHist.tempoVisita &&
+			horarioAbertura == locHist.horarioAbertura &&
+			horarioEncerramento == locHist.horarioEncerramento);
+}
+
+
+ostream & operator << (ostream & out, const LocaisHistoricosCulturais * locHist){
+	locHist->escrever(out);
+	return out;
+}
+
+ostream & operator << (ostream & out, const LocaisHistoricosCulturais & locHist){
+	locHist.escrever(out);
+	return out;
+}
+
 
 
 #endif

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class ViasLigacao : public Locais
+class ViasLigacao
 {
 	private:
 		Locais* origem;
@@ -30,8 +30,8 @@ class ViasLigacao : public Locais
 		void setCodigoVia(string cod);
 		void setTotalKilometrosVia(int totalVia);
 		void setTempoMedioPercurso(int tempMedio);
-		void setDestino(Locais*);
-		void setOrigem(Locais*);
+		void setDestino(Locais* origem);
+		void setOrigem(Locais* destino);
 
 		string getCodigoVia()const;
 		int getTotalKilometrosVia()const;
@@ -41,13 +41,20 @@ class ViasLigacao : public Locais
 		string getOrigemdesc() const;
 		string getDestinodesc() const;
 
-		virtual void escrever (ostream & out) const;
 		virtual double getPrecoPortagem() const;
-		//Sobrecarga de operadores
+
+		virtual void escrever (ostream & out) const;
+
+		
+		
+		//Sobrecarga
 		ViasLigacao & operator =(const ViasLigacao &vias);
 		bool operator >(const ViasLigacao &vias);
 		bool operator <(const ViasLigacao &vias);
 		bool operator == (const ViasLigacao &vias) const;
+
+		friend ostream & operator << (ostream & out, const ViasLigacao * vias);
+		friend ostream & operator << (ostream & out, const ViasLigacao  & vias);
 };
 
 ViasLigacao::ViasLigacao()
@@ -59,13 +66,15 @@ ViasLigacao::ViasLigacao()
 
 ViasLigacao::ViasLigacao(Locais* orig, Locais* dest,string cod,int totalVia,int tempMedio)
 {
-	codigo = cod;
-	totalKilometrosVia = totalVia;
-	tempMedioPercurso = tempMedio;
+	setCodigoVia(cod);
+	setTotalKilometrosVia(totalKilometrosVia);
+	setTempoMedioPercurso(tempMedio);
+	setOrigem(orig);
+	setDestino(dest);
 }
 
 
-ViasLigacao::ViasLigacao(const ViasLigacao &vias) : Locais(vias)
+ViasLigacao::ViasLigacao(const ViasLigacao &vias)
 {
 	setCodigoVia(vias.codigo);
 	setTotalKilometrosVia(vias.totalKilometrosVia);
@@ -132,23 +141,35 @@ int ViasLigacao::getTempoMedioPercurso() const
 
 string ViasLigacao::getOrigemdesc() const
 {
-	return origem->getDescricao1();
+	return origem->getDescricao();
 }
 
 string ViasLigacao::getDestinodesc() const
 {
-	return destino->getDescricao2();
+	return destino->getDescricao();
 }
 
+Locais* ViasLigacao::getOrigem() const
+{
+	return origem;
+}
+
+Locais* ViasLigacao::getDestino() const
+{
+	return destino;
+}
 
 ViasLigacao & ViasLigacao::operator=(const ViasLigacao &vias)
 {
-	if(this != &vias){
-		codigo = vias.getCodigoVia();
-		totalKilometrosVia = vias.getTotalKilometrosVia();
-		tempMedioPercurso = vias.getTempoMedioPercurso();
-	}
+	codigo = vias.getCodigoVia();
+	totalKilometrosVia = vias.getTotalKilometrosVia();
+	tempMedioPercurso = vias.getTempoMedioPercurso();
 	return *this;
+}
+
+
+double ViasLigacao::getPrecoPortagem() const {
+	return 0;
 }
 
 bool ViasLigacao::operator < (const ViasLigacao & vias)
@@ -173,10 +194,20 @@ bool ViasLigacao::operator == (const ViasLigacao & vias) const
 
 void ViasLigacao::escrever(ostream & out) const
 {  
-	Locais::escrever2(cout);
 	cout << "CODIGO DA VIA: " << codigo << endl;
 	cout << "TOTAL DE QUILOMETROS: " << totalKilometrosVia << " km" << endl;
 	cout << "TEMPO MEDIO: " << tempMedioPercurso << " minutos" << endl;
+}
+
+
+ostream & operator << (ostream & out, const ViasLigacao * vias){
+	vias->escrever(out);
+	return out;
+}
+
+ostream & operator << (ostream & out, const ViasLigacao & vias){
+	vias.escrever(out);
+	return out;
 }
 
 

@@ -29,7 +29,12 @@ class AutoEstradas : public ViasLigacao
 		
 		//Sobrecarga de operadores
 		void escrever(ostream &out) const;
-		
+		AutoEstradas & operator = (const AutoEstradas &ae);
+		bool operator ==(const AutoEstradas &ae) const;
+		bool operator <(const AutoEstradas &ae) const;
+
+		friend ostream & operator << (ostream & out, const AutoEstradas * ae);
+		friend ostream & operator << (ostream & out, const AutoEstradas  & ae);
 
 };
 
@@ -41,7 +46,7 @@ AutoEstradas::AutoEstradas()
 
 AutoEstradas::AutoEstradas(Locais* origem, Locais* destino,string cod,int totalVia,int tempMedio,double preco) : ViasLigacao(origem,destino,cod,totalVia,tempMedio)
 {
-	precoPortagem = preco;
+	setPrecoPortagem(preco);
 }
 
 AutoEstradas::~AutoEstradas(){}
@@ -74,6 +79,29 @@ void AutoEstradas::escrever(ostream &out)const
 	cout << "PRECO DA PORTAGEM: " << "$" << precoPortagem << endl << endl;
 }
 
+AutoEstradas& AutoEstradas::operator=(const AutoEstradas &ae) {
+	if(this != &ae){
+		precoPortagem = ae.precoPortagem;
+	}
+	return *this;
+}
 
+bool AutoEstradas::operator == (const AutoEstradas& ae)const{
+	return (precoPortagem==ae.precoPortagem);
+}
+
+bool AutoEstradas::operator < (const AutoEstradas& ae)const{
+	return (precoPortagem < ae.precoPortagem);
+}
+
+ostream & operator << (ostream & out, const AutoEstradas * ae){
+	ae->escrever(out);
+	return out;
+}
+
+ostream & operator << (ostream & out, const AutoEstradas & ae){
+	ae.escrever(out);
+	return out;
+}
 
 #endif

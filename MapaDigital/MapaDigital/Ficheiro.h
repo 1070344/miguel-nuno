@@ -66,12 +66,12 @@ void Ficheiro::criarGrafo(MapaDigital &graf){
 	{
 		if(typeid(AutoEstradas) == typeid(**it))
 		{
-			Pvias p(AutoEstradas((*it)->getCodigoVia,(*it)->getTotalKilometrosVia(),(*it)->getTempoMedioPercurso(),((AutoEstradas*)*it)->getPrecoPortagem(),(*it)->getOrigem(),(*it)->getDestino()));
+			Pvias p(AutoEstradas((*it)->getOrigem(),(*it)->getDestino(),(*it)->getCodigoVia(),(*it)->getTotalKilometrosVia(),(*it)->getTempoMedioPercurso(),((AutoEstradas*)*it)->getPrecoPortagem()));
 			graf.addGraphEdge(p,(*it)->getOrigem(),(*it)->getDestino());
 		}
 		if(typeid(EstradasNacionais) == typeid(**it))
 		{
-			Pvias p(EstradasNacionais((*it)->getCodigoVia(),(*it)->getTotalKilometrosVia(),(*it)->getTempoMedioPercurso(),((EstradasNacionais*)*it)->getTipoPavimento(),(*it)->getOrigem(),(*it)->getDestino()));
+			Pvias p(EstradasNacionais((*it)->getOrigem(),(*it)->getDestino(),(*it)->getCodigoVia(),(*it)->getTotalKilometrosVia(),(*it)->getTempoMedioPercurso(),((EstradasNacionais*)*it)->getTipoPavimento()));
 			graf.addGraphEdge(p,(*it)->getOrigem(),(*it)->getDestino());
 		}
 	}
@@ -252,11 +252,11 @@ void Ficheiro::lerFicheiroVias(string fx)
 							list < Locais* > :: iterator it;
 							for(it=listaLocais.begin() ; it!=listaLocais.end(); it++)
 							{
-								if((*it)->getDescricao1 == origem)
+								if((*it)->getDescricao() == origem)
 								{
 									local1 = *it;
 								}
-								if((*it)->getDescricao2() == destino)
+								if((*it)->getDescricao() == destino)
 								{
 									local2 = *it;
 								}
@@ -269,12 +269,12 @@ void Ficheiro::lerFicheiroVias(string fx)
 						{
 							list < Locais* > :: iterator it;
 							for(it=listaLocais.begin() ; it!=listaLocais.end(); it++){
-								if((*it)->getDescricao1() == origem){
+								if((*it)->getDescricao() == origem){
 
 									local1 = *it;
 
 								}
-								if((*it)->getDescricao2() == destino){
+								if((*it)->getDescricao() == destino){
 
 									local2 = *it;
 
@@ -295,14 +295,14 @@ void Ficheiro::lerFicheiroVias(string fx)
 bool Ficheiro::validarOrigem(string origem)
 {
 	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
-		if(origem == (*it)->getDescricao1())
+		if(origem == (*it)->getDescricao())
 			return true;
 }
 
 bool Ficheiro::validarDestino(string destino)
 {
 	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
-		if(destino == (*it)->getDescricao1())
+		if(destino == (*it)->getDescricao())
 			return true;
 }
 

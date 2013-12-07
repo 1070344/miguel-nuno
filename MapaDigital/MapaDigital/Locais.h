@@ -12,52 +12,47 @@ using namespace std;
 class Locais
 {
 	private:
-		string desc1;
-		string desc2;
+		string desc;
+		
 
 	public:
 		Locais();
 		Locais(const Locais &loc);
-		Locais(string desc1);
-		Locais(string desc1,string desc2);
+		Locais(string desc);
 		virtual Locais * clone() const;	
 		virtual ~Locais();
 
 		//set's e get´s
-		void setDescricao1(string d1);
-		void setDescricao2(string d2);
-		string getDescricao1()const;
-		string getDescricao2()const;
+		void setDescricao(string desc);
+		string getDescricao()const;
+		
+		//Sobrecarga
+		void Locais :: operator = (const Locais &loc);
+		bool operator == (const Locais &loc) const;
 
-		virtual void escrever(ostream & out) const;
-		virtual void escrever2(ostream & out) const;
+		friend ostream & operator << (ostream & out, const Locais * loc);
+		friend ostream & operator << (ostream & out, const Locais  & loc);
+
+		virtual void escrever (ostream & out) const;
 
 };
 
 
 Locais::Locais()
 {
-	desc1 = "vazio";
-	desc2 = "vazio";
+	desc = "vazio";
 }
 
-Locais::Locais(string d1)
+Locais::Locais(string d)
 {
-	desc1 = d1;
+	desc = d;
 }
 
-
-Locais::Locais(string d1,string d2)
-{
-	desc1 = d1;
-	desc2 = d2;
-}
 
 
 Locais::Locais(const Locais &loc)
 {
-	setDescricao1(loc.desc1);
-	setDescricao2(loc.desc2);
+	setDescricao(loc.desc);
 }
 
 
@@ -70,39 +65,34 @@ Locais * Locais::clone() const
 	return new Locais (*this);
 }
 
-void Locais::setDescricao1(const string d1)
+void Locais::setDescricao(const string d)
 {
-	desc1 = d1;
+	desc = d;
 }
 
 
-void Locais::setDescricao2(const string d2)
+string Locais::getDescricao()const
 {
-	desc2 = d2;
-}
-
-
-string Locais::getDescricao1()const
-{
-	return desc1;
-}
-
-string Locais::getDescricao2()const
-{
-	return desc2;
+	return desc;
 }
 
 
 void Locais::escrever(ostream & out) const
 {  
-	cout << "DESCRICAO: " << desc1 << endl;
+	cout << "DESCRICAO: " << desc << endl;
 }
 
-void Locais::escrever2(ostream & out) const
-{  
-	cout << "ORIGEM: " << desc1 << endl;
-	cout << "DESTINO: " << desc2 << endl;
+ostream & operator << (ostream & out, const Locais * loc){
+	loc->escrever(out);
+	return out;
 }
+
+ostream & operator << (ostream & out, const Locais & loc){
+	loc.escrever(out);
+	return out;
+}
+
+
 
 
 

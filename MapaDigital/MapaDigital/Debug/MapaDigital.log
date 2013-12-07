@@ -1,23 +1,19 @@
-﻿Build started 06/12/2013 20:34:23.
+﻿Build started 07/12/2013 20:45:32.
      1>Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Teste.cpp
          Teste.cpp
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(69): error C3867: 'ViasLigacao::getCodigoVia': function call missing argument list; use '&ViasLigacao::getCodigoVia' to create a pointer to member
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(74): error C2665: 'EstradasNacionais::EstradasNacionais' : none of the 3 overloads could convert all the argument types
-                 c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\estradasnacionais.h(19): could be 'EstradasNacionais::EstradasNacionais(Locais *,Locais *,std::string,int,int,std::string)'
-                 while trying to match the argument list '(std::string, int, int, std::string, Locais *, Locais *)'
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(255): error C3867: 'Locais::getDescricao1': function call missing argument list; use '&Locais::getDescricao1' to create a pointer to member
-     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(255): error C2678: binary '==' : no operator found which takes a left-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\exception(507): could be 'bool std::operator ==(const std::exception_ptr &,const std::exception_ptr &)'
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\exception(512): or       'bool std::operator ==(std::nullptr_t,const std::exception_ptr &)'
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\exception(517): or       'bool std::operator ==(const std::exception_ptr &,std::nullptr_t)'
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\system_error(426): or       'bool std::operator ==(const std::error_code &,const std::error_condition &) throw()'
-                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\system_error(434): or       'bool std::operator ==(const std::error_condition &,const std::error_code &) throw()'
-                 'Locais::getDescricao1': function call missing argument list; use '&Locais::getDescricao1' to create a pointer to member
-                 while trying to match the argument list '()'
-     1>Done Building Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)) -- FAILED.
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\pvias.h(106): warning C4715: 'Pvias::operator<' : not all control paths return a value
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\pvias.h(99): warning C4715: 'Pvias::operator>' : not all control paths return a value
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\pvias.h(112): warning C4715: 'Pvias::operator==' : not all control paths return a value
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\mapadigital.h(67): warning C4715: 'MapaDigital::localDef' : not all control paths return a value
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(300): warning C4715: 'Ficheiro::validarOrigem' : not all control paths return a value
+     1>c:\users\miguel\documents\github\miguel-nuno\mapadigital\mapadigital\ficheiro.h(307): warning C4715: 'Ficheiro::validarDestino' : not all control paths return a value
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.lib" /MACHINE:X86 Debug\Teste.obj
+         MapaDigital.vcxproj -> C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\Debug\MapaDigital.exe
+     1>Done Building Project "C:\Users\Miguel\Documents\GitHub\miguel-nuno\MapaDigital\MapaDigital\MapaDigital.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:01.85
+Time Elapsed 00:00:01.81

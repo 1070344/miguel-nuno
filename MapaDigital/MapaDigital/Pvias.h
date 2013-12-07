@@ -21,8 +21,8 @@ class Pvias {
 	public:
 		Pvias();
 		Pvias(int km, int tempo, double preco);
-		Pvias(const Pvias &v);
-		Pvias(const ViasLigacao &vl);
+		Pvias(const Pvias &pvias);
+		Pvias(const ViasLigacao &vias);
 		~Pvias();
 
 		int getKM() const;
@@ -33,17 +33,17 @@ class Pvias {
 		static void setComparacaoCUSTO();
 		static void setComparacaoTEMPO();
 
-		bool operator >(const Pvias &v) const;
-		bool operator <(const Pvias &v) const;
-		bool operator ==(const Pvias &v) const;
-		Pvias operator+(const Pvias &v);
-		const Pvias & operator+=(const Pvias &v);
-		const Pvias & operator=(const Pvias &v);
+		bool operator >(const Pvias &pvias) const;
+		bool operator <(const Pvias &pvias) const;
+		bool operator ==(const Pvias &pvias) const;
+		Pvias operator+(const Pvias &pvias);
+		const Pvias & operator+=(const Pvias &pvias);
+		const Pvias & operator=(const Pvias &pvias);
 
-		friend ostream & operator << (ostream & out, const Pvias * v);
-		friend ostream & operator << (ostream & out, const Pvias  & v);
+		friend ostream & operator << (ostream & out, const Pvias * pvias);
+		friend ostream & operator << (ostream & out, const Pvias  & pvias);
 
-		void escreve(ostream &out) const;
+		void escrever(ostream &out) const;
 };
 
 
@@ -72,12 +72,12 @@ Pvias::~Pvias(){
 	delete apvia;
 }
 
-Pvias::Pvias(const Pvias &v){
-	apvia=v.apvia->clone();
+Pvias::Pvias(const Pvias &pvias){
+	apvia=pvias.apvia->clone();
 }
 
-Pvias::Pvias(const ViasLigacao &vl){
-	this->apvia=vl.clone();
+Pvias::Pvias(const ViasLigacao &vias){
+	this->apvia=vias.clone();
 }
 
 int Pvias::getKM() const {
@@ -92,53 +92,53 @@ int Pvias::getTempo() const{
 	return apvia->getTempoMedioPercurso();
 }
 
-bool Pvias::operator >(const Pvias &v) const{
-	if (tipoComparacao==TipoComparacao::KMS) return this->apvia->getTotalKilometrosVia() > v.apvia->getTotalKilometrosVia();
-	if (tipoComparacao==TipoComparacao::CUSTO) return this->apvia->getPrecoPortagem() > v.apvia->getPrecoPortagem();	
-	if (tipoComparacao==TipoComparacao::TEMPO) return this->apvia->getTempoMedioPercurso() > v.apvia->getTempoMedioPercurso();
+bool Pvias::operator >(const Pvias &pvias) const{
+	if (tipoComparacao==TipoComparacao::KMS) return this->apvia->getTotalKilometrosVia() > pvias.apvia->getTotalKilometrosVia();
+	if (tipoComparacao==TipoComparacao::CUSTO) return this->apvia->getPrecoPortagem() > pvias.apvia->getPrecoPortagem();	
+	if (tipoComparacao==TipoComparacao::TEMPO) return this->apvia->getTempoMedioPercurso() > pvias.apvia->getTempoMedioPercurso();
 }
 
-bool Pvias::operator <(const Pvias &v) const{
-	if (tipoComparacao==TipoComparacao::KMS) return this->apvia->getTotalKilometrosVia() < v.apvia->getTotalKilometrosVia();
-	if (tipoComparacao==TipoComparacao::CUSTO) return this->apvia->getPrecoPortagem() < v.apvia->getPrecoPortagem();	
-	if (tipoComparacao==TipoComparacao::TEMPO) return this->apvia->getTempoMedioPercurso() < v.apvia->getTempoMedioPercurso();
+bool Pvias::operator <(const Pvias &pvias) const{
+	if (tipoComparacao==TipoComparacao::KMS) return this->apvia->getTotalKilometrosVia() < pvias.apvia->getTotalKilometrosVia();
+	if (tipoComparacao==TipoComparacao::CUSTO) return this->apvia->getPrecoPortagem() < pvias.apvia->getPrecoPortagem();	
+	if (tipoComparacao==TipoComparacao::TEMPO) return this->apvia->getTempoMedioPercurso() < pvias.apvia->getTempoMedioPercurso();
 		
 }
 
-bool Pvias::operator ==(const Pvias &v) const{
-	if (tipoComparacao==TipoComparacao::KMS) return this->apvia->getTotalKilometrosVia() == v.apvia->getTotalKilometrosVia();
-	if (tipoComparacao==TipoComparacao::CUSTO) return this->apvia->getPrecoPortagem() == v.apvia->getPrecoPortagem();
-	if (tipoComparacao==TipoComparacao::TEMPO) return this->apvia->getTempoMedioPercurso() == v.apvia->getTempoMedioPercurso();
+bool Pvias::operator ==(const Pvias &pvias) const{
+	if (tipoComparacao==TipoComparacao::KMS) return this->apvia->getTotalKilometrosVia() == pvias.apvia->getTotalKilometrosVia();
+	if (tipoComparacao==TipoComparacao::CUSTO) return this->apvia->getPrecoPortagem() == pvias.apvia->getPrecoPortagem();
+	if (tipoComparacao==TipoComparacao::TEMPO) return this->apvia->getTempoMedioPercurso() == pvias.apvia->getTempoMedioPercurso();
 }
 
-Pvias Pvias::operator+(const Pvias &v){
-	return Pvias(apvia->getTotalKilometrosVia()+v.apvia->getTotalKilometrosVia(),
-		apvia->getTempoMedioPercurso()+v.apvia->getTempoMedioPercurso(),
-		apvia->getPrecoPortagem()+v.apvia->getPrecoPortagem());
+Pvias Pvias::operator+(const Pvias &pvias){
+	return Pvias(apvia->getTotalKilometrosVia()+pvias.apvia->getTotalKilometrosVia(),
+		apvia->getTempoMedioPercurso()+pvias.apvia->getTempoMedioPercurso(),
+		apvia->getPrecoPortagem()+pvias.apvia->getPrecoPortagem());
 }
 
-const Pvias & Pvias :: operator+=(const Pvias &v)
+const Pvias & Pvias :: operator+=(const Pvias &pvias)
 {
-	apvia->setTotalKilometrosVia(apvia->getTotalKilometrosVia() + v.apvia->getTotalKilometrosVia());
-	apvia->setTempoMedioPercurso(apvia->getTempoMedioPercurso() + v.apvia->getTempoMedioPercurso());
+	apvia->setTotalKilometrosVia(apvia->getTotalKilometrosVia() + pvias.apvia->getTotalKilometrosVia());
+	apvia->setTempoMedioPercurso(apvia->getTempoMedioPercurso() + pvias.apvia->getTempoMedioPercurso());
 	if (typeid(*apvia)==typeid(AutoEstradas)) {
 		AutoEstradas *ae = (AutoEstradas *)this->apvia;
-		ae->setPrecoPortagem(ae->getPrecoPortagem() + v.apvia->getPrecoPortagem());
+		ae->setPrecoPortagem(ae->getPrecoPortagem() + pvias.apvia->getPrecoPortagem());
 	}	
 	return *this;
 }
 
-const Pvias & Pvias::operator=(const Pvias &v) {
-	this->apvia = v.apvia->clone();
+const Pvias & Pvias::operator=(const Pvias &pvias) {
+	this->apvia = pvias.apvia->clone();
 	return *this;
 }
 
-void Pvias::escreve(ostream & out) const{
+void Pvias::escrever(ostream & out) const{
 	cout << *apvia;
 }
 
-ostream & operator << (ostream & out, const Pvias & v){
-	v.escreve(out);
+ostream & operator << (ostream & out, const Pvias & pvias){
+	pvias.escrever(out);
 	return out;
 }
 

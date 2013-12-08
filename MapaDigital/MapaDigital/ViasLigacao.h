@@ -67,7 +67,7 @@ ViasLigacao::ViasLigacao()
 ViasLigacao::ViasLigacao(Locais* orig, Locais* dest,string cod,int totalVia,int tempMedio)
 {
 	setCodigoVia(cod);
-	setTotalKilometrosVia(totalKilometrosVia);
+	setTotalKilometrosVia(totalVia);
 	setTempoMedioPercurso(tempMedio);
 	setOrigem(orig);
 	setDestino(dest);

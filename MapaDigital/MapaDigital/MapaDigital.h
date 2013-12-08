@@ -29,7 +29,7 @@ public:
 	void menorCaminhoDistancia(const string &ci, const string &cf);
 	void maiorCaminho(const string &ci, const string &cf);
 	void menorCaminhoCusto(const string &ci, const string &cf);
-	void terminarVisita(const string &ci, const string &cf);
+	void tempoMedioVisita(const string &ci, const string &cf);
 	Locais * localDef(const string &s1);
 
 	void menorDistancia();
@@ -66,7 +66,7 @@ Locais * MapaDigital::localDef(const string &s1)
 	}
 }
 
-//Apresentar todos os percursos possíveis entre dois locais de interesse turístico
+
 queue < stack <Locais*> > MapaDigital::caminhos(const string &local1, const string &local2)
 {
 	queue < stack <Locais*> > caminhos = distinctPaths(localDef(local1),localDef(local2));
@@ -122,18 +122,18 @@ void MapaDigital::maiorCaminho(const string &local1, const string &local2)
 void MapaDigital::menorCaminhoDistancia(const string &ci, const string &cf) 
 {
 	Pvias::setComparacaoKMS();
-	cout << "Menor distancia entre " << ci << " e " << cf << " : " ;
+	cout << "Menor caminho entre " << ci << " e " << cf << " : " ;
 	menorCaminho(ci, cf);
 }
 
 void MapaDigital::menorCaminhoCusto(const string &ci, const string &cf) 
 {
 	Pvias::setComparacaoCUSTO();
-	cout << "Menor distancia entre " << ci << " e " << cf << " : " ;
+	cout << "Menor caminho entre " << ci << " e " << cf << " : " ;
 	menorCaminho(ci, cf);
 }
 
-void MapaDigital::terminarVisita(const string &ci, const string &cf) 
+void MapaDigital::tempoMedioVisita(const string &ci, const string &cf) 
 {
 	Pvias::setComparacaoTEMPO();
 	cout << "Tempo Medio de visita entre " << ci << " e " << cf << " : " ;

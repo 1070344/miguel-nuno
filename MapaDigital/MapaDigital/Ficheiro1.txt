@@ -3,3 +3,5 @@ Museu da Cera,120,640,1110
 Torre dos Clerigos,2300
 Casa da Musica,120,600,1110
 Serralves,9000
+ISEP,80,300,500
+FEUP,6300

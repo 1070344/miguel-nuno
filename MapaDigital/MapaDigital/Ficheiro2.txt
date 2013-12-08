@@ -4,3 +4,5 @@ Serra do Pilar,Igreja da Se,EN1,200,150,terra batida
 Casa da Musica,Castelo do Queijo,A3,54,30,3.25 
 Museu da Cera,Casa da Musica,A1,120,60,13.25 
 ISEP,FEUP,A4,80,90,7.05
+Serralves,FEUP,A6,45,80,3.55
+ISEP,Serralves,A6,10,60,0.60

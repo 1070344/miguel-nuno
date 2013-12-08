@@ -11,7 +11,6 @@
 
 using namespace std;
 
-#include "Ficheiro.h"
 #include "Locais.h"
 #include "LocaisHistoricosCulturais.h"
 #include "LocaisNaturais.h"
@@ -35,8 +34,7 @@ class Ficheiro
 		//void inserirLocais(Locais *loc);
 		void contarTiposLocal();
 		//void ordenar();
-		void inserirNovoLocal();
-
+	
 		void lerFicheiroVias(string fx);
 		//void inserirVias(ViasLigacao *vias);
 		bool validarOrigem(string origem);
@@ -60,19 +58,19 @@ Ficheiro::~Ficheiro()
 }
 
 
-void Ficheiro::criarGrafo(MapaDigital &graf){
+void Ficheiro::criarGrafo(MapaDigital &map){
 	list < ViasLigacao* > :: iterator it;
 	for(it = listaVias.begin(); it != listaVias.end(); it++)
 	{
 		if(typeid(AutoEstradas) == typeid(**it))
 		{
 			Pvias p(AutoEstradas((*it)->getOrigem(),(*it)->getDestino(),(*it)->getCodigoVia(),(*it)->getTotalKilometrosVia(),(*it)->getTempoMedioPercurso(),((AutoEstradas*)*it)->getPrecoPortagem()));
-			graf.addGraphEdge(p,(*it)->getOrigem(),(*it)->getDestino());
+			map.addGraphEdge(p,(*it)->getOrigem(),(*it)->getDestino());
 		}
 		if(typeid(EstradasNacionais) == typeid(**it))
 		{
 			Pvias p(EstradasNacionais((*it)->getOrigem(),(*it)->getDestino(),(*it)->getCodigoVia(),(*it)->getTotalKilometrosVia(),(*it)->getTempoMedioPercurso(),((EstradasNacionais*)*it)->getTipoPavimento()));
-			graf.addGraphEdge(p,(*it)->getOrigem(),(*it)->getDestino());
+			map.addGraphEdge(p,(*it)->getOrigem(),(*it)->getDestino());
 		}
 	}
 }
@@ -137,16 +135,55 @@ void Ficheiro::lerFicheiroLocais(string fx)
 
 					if (abertura == 0 ) 
 					{
-						listaLocais.push_front(new LocaisNaturais(desc,v2));
+						listaLocais.push_back(new LocaisNaturais(desc,v2));
 					}
 					else
 					{
-						listaLocais.push_front(new LocaisHistoricosCulturais(desc,v2,abertura,encerramento));
+						listaLocais.push_back(new LocaisHistoricosCulturais(desc,v2,abertura,encerramento));
 					}
 
 				}
 		}
 		file.close();
+}
+
+
+bool ordenarLocais(Locais* loc1, Locais* loc2)
+{
+	return loc1->getDescricao() < loc2->getDescricao();
+}
+
+void Ficheiro::listarLocais()
+{				
+	listaLocais.sort(ordenarLocais);
+	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
+	{
+		(*it)->escrever(cout);
+	}
+	cout << endl;		
+}
+
+void Ficheiro::contarTiposLocal()
+{			
+
+	int totalNaturais = 0;
+	int totalCulturais= 0;
+
+	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
+	{
+		if (typeid(**it) == (typeid(LocaisNaturais)))
+		{
+			totalNaturais++;
+		}
+		else 
+			if (typeid(**it) == (typeid(LocaisHistoricosCulturais)))
+			{
+				totalCulturais++;
+			}
+	}
+	cout << "TOTAL de LOCAIS NATURAIS: " << totalNaturais << endl;	
+	cout << "TOTAL ce LOCAIS HISTORICO CULTURAIS: " << totalCulturais << endl;	
+
 }
 
 /*void Ficheiro::inserirLocais(Locais *loc)
@@ -263,7 +300,7 @@ void Ficheiro::lerFicheiroVias(string fx)
 							}
 
 							pavimento = aux;
-							listaVias.push_front(new EstradasNacionais(local1,local2,codigo,totalKilom,tempMedio,pavimento));
+							listaVias.push_back(new EstradasNacionais(local1,local2,codigo,totalKilom,tempMedio,pavimento));
 						}
 						else
 						{
@@ -282,7 +319,7 @@ void Ficheiro::lerFicheiroVias(string fx)
 							}
 
 							portagem = atof(aux);
-							listaVias.push_front(new AutoEstradas(local1,local2,codigo,totalKilom,tempMedio,portagem));
+							listaVias.push_back(new AutoEstradas(local1,local2,codigo,totalKilom,tempMedio,portagem));
 						}
 					}
 				}
@@ -345,39 +382,8 @@ bool Ficheiro::validarDestino(string destino)
 }*/
  
 
-void Ficheiro::contarTiposLocal()
-{			
-
-	int totalNaturais = 0;
-	int totalCulturais= 0;
-
-	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
-	{
-		if (typeid(**it) == (typeid(LocaisNaturais)))
-		{
-			totalNaturais++;
-		}
-		else 
-			if (typeid(**it) == (typeid(LocaisHistoricosCulturais)))
-			{
-				totalCulturais++;
-			}
-	}
-	cout << "TOTAL de LOCAIS NATURAIS: " << totalNaturais << endl;	
-	cout << "TOTAL ce LOCAIS HISTORICO CULTURAIS: " << totalCulturais << endl;	
-
-}
 
 
-
-void Ficheiro::listarLocais()
-{				
-	for(list<Locais *>::iterator it = listaLocais.begin(); it != listaLocais.end(); it++)
-	{
-		(*it)->escrever(cout);
-	}
-	cout << endl;		
-}
 
 void Ficheiro::listarVias()
 {				
